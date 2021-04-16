@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제</title>
+    <style>
+        body{
+            position: flex;
+            position: relative;
+        }
+        #enter, #over{
+            position: relative;
+            width: 300px; height: 300px;
+            border: 10px solid red;
+            background: black;
+            border-radius: 50%;
+        }
+        .child{
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            background: white;
+            border: 10px solid red;
+            margin: auto;
+        }
+    </style>    
+    <script src="lib/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#enter").mouseenter(function(){
+                $(this).animate({"width" : "500px", "height" : "500px"})
+            })
+            $("#enter").mouseleave(function(){
+                $(this).animate({"width" : "300px", "height" : "300px"})
+            })
+            $("#over").mouseover(function(){
+                $(this).animate({"width" : "500px", "height" : "500px"})
+            })
+            $("#over").mouseout(function(){
+                $(this).animate({"width" : "300px", "height" : "300px"})
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="enter">
+        <div class="child"></div>
+    </div>
+    <div id="over">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

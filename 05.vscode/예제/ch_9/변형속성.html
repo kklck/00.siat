@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Transition Basic</title>
+    <style>
+        #graph {
+            width: 610px;
+            border: 3px solid black;
+        }
+
+        .bar {
+            width: 10px; height: 50px;
+            background-color: orange;
+            margin: 5px;
+            background-color: orange;
+            transition-duration: 5s;/*property 순서 따라 시간 다르게 적용 가능*/
+        }
+        #graph:hover > .bar {
+            width: 600px;
+        }
+
+        .bar:nth-child(1) { 
+            transition-delay: 0s;
+            transition-timing-function: linear; /*일정*/
+        }
+        .bar:nth-child(2) { 
+            transition-delay: 1s;
+            transition-timing-function: ease; /*짧은감속-가속-감속*/
+        }
+        .bar:nth-child(3) { 
+            transition-delay: 2s;
+            transition-timing-function: ease-in; /*감속-가속*/
+        }
+        .bar:nth-child(4) { 
+            transition-delay: 3s;
+            transition-timing-function: ease-in-out;/*긴감속-가속-감속*/
+        }
+        .bar:nth-child(5) { 
+            transition-delay: 4s;
+            transition-timing-function: ease-out;/*가속-감속*/
+        }
+
+        /* #graph:hover > .bar:nth-child(1) {
+            background-color: red;
+            width: 100px;
+        }
+        #graph:hover > .bar:nth-child(2) { 
+            background-color: blue;
+            width: 300px;
+        }
+        #graph:hover > .bar:nth-child(3) { 
+            background-color: green;
+            width: 400px;
+        }
+        #graph:hover > .bar:nth-child(4) { 
+            background-color: yellow;
+            width: 200px;
+        }
+        #graph:hover > .bar:nth-child(5) { 
+            background-color: pink;
+            width: 400px;
+        } */
+    </style>
+</head>
+<body>
+    <h1>CSS3 Transition Graph</h1>
+    <div id="graph">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</body>
+</html>

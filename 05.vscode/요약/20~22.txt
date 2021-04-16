@@ -1,0 +1,28 @@
+반응형 웹 (p.466)
+    - 속성 : min, max 함께 사용
+        - 화면의 너비, 높이, 비율
+        - 장치의 너비, 높이, 방향, 색상 비트, 표현 색상 수, 해상도
+        - 흑색 장치의 픽셀당 비트
+        - Ex)@media screen and (min-width: 768px) and (max-width: 959px)
+- @media : css를 설정할 장치를 지정
+    - all : 모든 장치
+    - aural : TTS(Text To Speech)
+    - braille : 점자 출력 장치
+    - handheld : 초소형
+    - print : 프린터(브라우저 Ctrl+p)
+    - projection : 
+    - screen : 브라우저 화면
+    - tty : 
+    - tv : 
+
+- 내가 부르는 라이브러리
+- 나를 부르는 프레임워크
+
+- bootstrap : 임의의 클래스 이름을 지정하여 css 설정
+
+- class = "container" : 지정된 레이아웃. 더 깔끔한 fluid 
+
+- 툴바
+    - 부동형    
+
+* 예제 11

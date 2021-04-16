@@ -1,0 +1,57 @@
+- 함수
+    - function 함수명(){}
+    - a = 함수명    // a가 함수화.
+    - a = 함수명()  // return 값을 저장.
+    - function 함수명(...가변매개변수명){}
+        - a = [1,2,3,4]
+        - (a, b, ...c)      // 1,2,[3,4]
+        
+- 콜백 함수
+    - 함수의 매개변수가 함수 인 것.
+    - 특정한 동작을 여러 함수가 사용할 때, 스크립트를 자바처럼 쓰고자.
+    - .forEach()
+    - .map()
+        - 배열명2 = 배열명1.map(함수명)
+        - 콜백 함수의 리턴값을 새로운 배열로 만들고자.
+    - .filter()
+        - 배열명2 = 배열명1.fitler(함수명)
+        - 리턴 값이 true인 경우만 반환하여 새로운 배열로 만들고자.
+    - 화살표 함수
+        - (매개변수)=>식
+        - 람다식, 한 줄
+        - return은 중괄호 안에, 
+    - 타이머 함수
+        - setTimeout(함수, 시간) : 해당 시간 지난 후, 함수 한 번 호출
+        - setInterval(함수, 시간) : 해당 시간 마다 함수 호출
+        - 함수 칸에 리턴 값이 있는 문자열을 넣을 수 있다. 대신 내부에는 작은 따옴표만.
+            - Ex) setInterval("console.log('100')",1000)
+
+- window
+    - 구성
+        - DOM : Document Object Model
+        - BOM : Brawser Object Model
+        - JavaScript
+    - windwo 객체 선언은 생략
+
+- DOMContentLoaded(p.311)
+    - 구성
+        - Node : Document, CharacterData, Element, Attr
+    - document.addEventListener('이벤트', ()=> {}) // 해당 이벤트가 실행되면~
+    - document.querySelector|All(선택자)
+    - 선택자.textContent|style
+        - css와 네이밍 다른 점 : (-)없음, 단어 첫 글자는 대문자
+    - document.createElement(선택자)
+---------------------------------------------------------------
+
+
+
+===================================================
+나중 과제
+금광 찾기
+100x100에 임의의 좌표 설정
+
+사용자 찍음
+
+(x^2+y^2)=c^2 좌표상 거리 출력
+
+세 개의 원이 합쳐지는 곳이 임의의 좌표일 것.

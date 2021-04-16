@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>축구공 움직이기</title>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 별의 초기 설정
+        const star = document.querySelector('#star')
+        const food = document.querySelector('#food')
+        star.style.position = 'absolute'
+        food.style.position = 'absolute'
+
+        let score_div = document.querySelector("#score")
+
+        // 별의 이동을 출력하는 기능
+        let [x, y] = [1, 1] // x = 0, y = 0
+        const block = 20
+        const print = () => {
+          star.style.left = `${x * block}px`
+          star.style.top = `${y * block}px`
+        }
+        print()
+
+        // 별을 이동하는 기능
+        const [left, up, right, down] = [37, 38, 39, 40]
+        let star_dir = right//별의 이동 방향, 디폴트 right
+        document.body.addEventListener('keydown', (event) => {
+          star_dir = event.keyCode
+          // move_star(event.keyCode)
+        })
+        
+        let reverse = ""
+        function move_star(){
+          switch (star_dir) {
+            case left:
+              (x<=1)? stop_star(): x -= 1
+              break
+            case up:
+              (y<=1)? stop_star(): y -= 1
+              break
+            case right:
+              (x>=43)? stop_star(): x += 1
+              break
+            case down:
+              (y>=34)? stop_star(): y += 1
+              break
+          }
+          print()
+          //먹이 충돌 검사
+          if(x == food_x && y == food_y){
+            score++
+            score_div.textContent = "점수 : " + score 
+            make_food()
+          }
+        }
+        let score = 0
+        //계속 움직이게
+        let dir = right
+        let move_interval_ms = 100//밀리초
+        let interval_id = setInterval(move_star, move_interval_ms)
+        
+        function stop_star(){
+          clearInterval(interval_id)
+          score_div.textContent += " - 교체되었습니다."
+        }
+        //먹이 추가하기
+        let food_x = 0, food_y = 0
+        function make_food(){
+          food_x = Math.floor(Math.random()*42+1)
+          food_y = Math.floor(Math.random()*33+1)
+          food.style.left = `${food_x*block}px`
+          food.style.top = `${food_y*block}px`
+        }
+        make_food()
+      })
+    </script>
+    <style>
+      #wrap{
+        position: relative;
+        width: 901px; height: 720px;
+        border: 1px solid black;
+        background-image: url("축구장.png");
+      }
+      h1{
+        transition: 0.1s linear;
+        line-height: 32px;
+        margin: 0px;
+        width: 32px; height: 32px;
+        text-align: center;
+      }
+      img{
+        width: 32px; height: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <h1 id="star"><img src="진짜공.png"></h1>
+      <h1 id="food">$</h1>
+    </div>
+    <div>
+      <h2 id="score">점수 : 0</h2>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+- 목록 플러그인 활용
+    - ul>li*2 -> <ul> <li></li><li></li> </ul>
+
+- https : Hyper Text Transfer Protocol Secure
+
+- Web
+    - TCP 사용
+    - Stateless : 필요할 때 마다 동작하기 때문에 정보를 저장하지 않음, Live Server
+    <-> Statepull : 상태를 저장하여 동작, WebSocket
+
+- table
+    - 생성 시, <tbody> 자동 생성
+    - caption : 테이블 제목
+    - 속성
+        - width, border 같은 오래된 기능은 표준으로 지원하지 않고, css 에서 설정해야 함
+
+- img
+    - alt : 이미지 파일 로딩 오류 발생 시, 대체 문구
+    - base64 : 이미지를 64비트로
+        * data:image/jpeg;base64
+
+- form
+    - action : 입력 데이터의 전달 위치
+    - parameter : '변수 = 값'
+        -변수 이름은 중복 시, 마지막 변수만 유효하거나, 리스트 형식으로 반환
+        - & : 파라미터를 연결
+        - ex) https://search.naver.com/search.naver?query=JAVA
+    - <input> -> input:타입명
+        - button, checkbox, file, hidden, image, password, radio, reset, submit, text...etc
+        - radio : 같은 name, 다른 value, 단일 값 선택.
+        - button, image, submit : 전송 역할 수행
+        - hidden : 수정 내역 페이지, 무조건 전송
+
+    - HTML5 에서 추가된 <input> 타입
+        - color, date(time(-local)), email, month, number, range, search, tel, time, url, week...etc
+
+- html 태그의 구분
+    - 1. Block 타입 : 앞 뒤 줄 바꿈
+        - 폭, 높이 등 조절 가능.
+        - <div>, <h1>, <p>
+    - 2. Inline 타입 : 동일 행에 연결
+        - 조절 불가
+        - <span>, <input>
+    - 3. Inline-Block 타입 : 동일 행에 연결하고 조절이 가능
+- 파라미터 전송 연습 서버 : tomcat
+    - eclipse, Java EE 모드
+    - server create
+    - tomcat 설정
+
+- parameter 통해 받은 값 활용
+    - ${param.변수} -> 값 출력
+    - requset.getParameter("변수"); -> Java 코드에서 값 저장
+
+- Java 코드 활성화
+    - <% ~ out.println(""); %>
+
+---------------------------------------------------------------
+과제
+
+1. 게시물 등록페이지 작성, form,input
+2. 게시물 목록페이지 작성, table
+
+연동할 필요 없이 두 개의 html 작성

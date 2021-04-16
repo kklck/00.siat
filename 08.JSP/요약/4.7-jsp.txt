@@ -1,0 +1,38 @@
+- 쿠키
+    - 웹 서버 : js, jQuery
+    - 웹 브라우저 : jsp
+         - 서버에서 생성 => reponse로 클라이언트에 전송 => request로 쿠키 읽음
+    - ex) 오늘 하루 열지 않기
+	- Cookie c = new Cookie("이름","값");
+	- c.setMaxAge(1*60*2); 
+	- response.addCookie(c);
+    - Cookie[] cookies = request.getCookies();
+- 세션
+    - 쿠키의 보안상 문제 해결
+    - 속성 값 받아올 때 Object
+    - 세션 종료
+        - removeAttribute : 특정 속성 제거, ex)장바구니 삭제
+        - invalidate() : 모든 속성 제거, ex)로그아웃
+    - session.setAttribute("id", user);
+	- response.sendRedirect("MainPage.jsp");
+    - Object id = session.getAttribute("id");//형변환 필수
+    - 타임아웃
+        => web.xml : 분 단위, 
+        <session-config>
+            <session-timeout>60</session-timeout>
+        </session-config>
+        => weblogic.xml : 초 단위
+        <session-descriptor>
+            <timeout-secs>3600</timeout-secs>
+        </session-descriptor> 
+- Ajax
+    - 07.jQuery/WebUI/ajax
+    - 검색에 비동기성
+
+- GoF 패턴
+    - Singleton :
+
+
+=============================
+EmpDAO 싱글톤으로
+9장

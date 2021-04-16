@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> 첫 연습 </title>
+	<style>
+		#here{
+			position: absolute;
+			left: 0; top: 0;
+		}
+	</style>
+	<script src="../lib/jquery-3.6.0.js"></script>
+	<script>
+		$(function(){//$(document).ready(function(){});
+		let h = $("#here");
+			h.click(function(){
+				h.text("클릭하면 내용이 변경")
+			})
+			h.hover(function(){//mouseenter
+				h.css("border", "2px solid #FF8800")
+			},function(){//mouseleave
+				h.css("border", "2px dotted green")
+			})
+		$("#here").fadeOut(1000);
+		$("#here").fadeIn(1000);
+		$("#here").slideUp(1000);
+		$("#here").slideDown(1000);
+		$("#here").animate({"left": 400,"top":200});
+		})
+
+	</script>
+</head>
+<body>
+	
+
+	<div id="here">
+		아자아자 제이쿼리~~!!! 
+	</div>
+	
+	
+	<div id="student">
+		<div id="name">홍길동</div>
+		<div id="age">34</div>
+	</div>
+
+
+	
+</body>
+</html>

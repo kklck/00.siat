@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>낱말의 자비가 내려와</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #wrap{
+            width: 700px; height: 500px;
+            margin: 0 auto;
+            border: 5px solid black;
+        }
+        #words{
+            width: 99.4%; height: 400px;
+            border: 2px dotted red;
+            position: relative;/*h3을 앱솔루트 하기 위한*/
+        }
+        #words > h3{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            margin: 0;
+            transition: 0.1s;
+        }
+        #input{
+            display: flex;/*자식들을 유연하게 가로정렬*/
+        }
+        #input>div{
+            width: 220px;
+        }
+    </style>
+</head>
+<body>
+    <h1>타자 연습 게임</h1>
+    <div id="wrap">
+        <div id="words">
+            <!--낱말이 내려오는 디스플레이, 내부에 수 많은 div 태그에 낱말을 넣음. -->
+        </div>
+        <div id="input"><!--낱말을 입력하는 창-->
+            <div id="score">점수 : </div>
+            <div>
+                <input type="text" id="word">
+            </div>
+            <div id="fail">실패 : </div>
+        </div>
+    </div>
+    <script>
+        let words = document.querySelector("#words")
+        let word = document.querySelector("#word")
+        let score = document.querySelector("#score")
+        let fail = document.querySelector("#fail")
+        let sucess = 0, defeated = 0
+        let txt = "이상해씨, 이상해풀, 이상해꽃, 파이리, 리자드, 리자몽, 꼬부기, 어니부기, 거북왕, 캐터피, 단데기, 버터플, 뿔충이, 딱충이, 독침붕, 구구, 피죤, 피죤투, 꼬렛, 레트라, 깨비참, 깨비드릴조, 아보, 아보크, 피카츄, 라이츄, 모래두지, 고지, 니드런♀♂, 니드리나, 니드퀸, 니드리노, 니드킹, 삐삐, 픽시, 식스테일, 나인테일, 푸린, 푸크린, 주뱃, 골뱃, 뚜벅쵸, 냄새꼬, 라플레시아, 파라스, 파라섹트, 콘팡, 도나리, 디그다, 닥트리오, 나옹, 페르시온, 고라파덕, 골덕, 망키, 성원숭, 가디, 윈디, 발챙이, 슈륙챙이, 강챙이, 케이시, 윤겔라, 후딘, 알통몬, 근육몬, 괴력몬, 모다피, 우츠동, 우츠보트, 왕눈해, 독파리, 꼬마돌, 데구리, 딱구리, 포니타, 날쌩마, 야돈, 야도란, 코일, 레어코일, 파오리, 두두, 두트리오, 쥬쥬, 쥬레곤, 질퍽이, 질뻐기, 셀러, 파르셀, 고오스, 고우스트, 팬텀, 롱스톤, 슬리프, 슬리퍼, 크랩, 킹크랩, 찌리리공, 붐볼, 아라리, 나시, 탕구리, 텅구리, 시라소몬, 홍수몬, 내루미, 또가스, 또도가스, 뿔카노, 코뿌리, 럭키, 덩쿠리, 캥카, 쏘드라, 시드라, 콘치, 왕콘치, 별가사리, 아쿠스타, 마임맨, 스라크, 루주라, 에레브, 마그마, 쁘사이저, 켄타로스, 잉어킹, 갸라도스, 라프라스, 메타몽, 이브이, 샤미드, 쥬피썬더, 부스터, 폴리곤, 암나이트, 암스타, 투구, 투구푸스, 프테라, 잠만보, 프리져, 썬더, 파이어, 미뇽, 신뇽, 망나뇽, 뮤츠, 뮤"
+        let txt_list = txt.split(",").map((val)=>val.trim())//정렬된 배열 하나씩 val에 할당 후, 공백 제거한 값을 리스트로
+        
+        
+        function add_word(){
+            let h3 = document.createElement("h3")//DOM 객체 => <h3></h3> 껍데기 만든 것 뿐.
+            let word_index = Math.floor(Math.random()*(txt_list.length))//랜덤 단어
+            let left = Math.floor(Math.random()*85)//랜덤 위치
+            h3.textContent = txt_list.splice(word_index,1)//단어 추가 => <h3>단어</h3>
+            h3.style.left = `${left}%`
+            h3.style.top = `-1px`
+            words.appendChild(h3)
+        }
+        //글자 입력 시, 엔터만 들어와
+        word.onkeyup = (event)=>{//콜백 함수처럼 임의 사용
+            if(event.keyCode == 13){//엔터키가 아니면        //수행하지마
+                let h3s = document.querySelectorAll("#words>h3")//화면에 보이는 모든 ㅣㅐ단어를 문자화
+                for(let h3 of h3s){//해당 for문에서만 접근 가능한 h3
+                    if(word.value == h3.textContent){//입력한 단어 == 모든 단어 중 하나
+                        // h3.style.fontSize = "5em"//폰트 크기
+                        h3.style.top = "0px"
+                        h3.style.left = "700px"
+                        h3.style.opacity = "0"//투명하게
+                        sucess++
+                        score.textContent = "점수 : " + sucess
+                    }
+                }
+                word.value = ""//입력한 단어 초기화
+            }
+        }
+        // setInterval(add_word, 2000)//단어 나오는 동작
+        
+        //보이는 단어가 움직일 수 있도록
+        function move_words(){
+            if(defeated>=10){
+                end_game()
+                return
+            }
+            let h3s = document.querySelectorAll("#words>h3")//화면에 보이는 모든 단어를 문자화
+            if(txt_list.length >0){
+                add_word()
+            }else if(txt_list.length<=0 && h3s.length<=0){//게임 끝
+                end_game()
+                return
+            }
+            for(let h3 of h3s){//해당 for문에서만 접근 가능한 h3
+                let top = parseInt(h3.style.top) // h3.style.top의 형식이 0px 이기 때문에 앞부분 추출 위해.
+                top += move_block
+                if(top>=400){//화면 밖으로 내려가거나, 투명도가 0이 되면
+                    words.removeChild(h3)
+                    defeated++
+                    fail.textContent = "실패 : " + defeated
+                }else if(h3.style.opacity == "0"){
+                    words.removeChild(h3)
+                }
+                h3.style.top = top+"px"//다시 숫자를 픽셀문자화
+            }
+        }
+        //게임 시작
+        let interval_id
+        let words_top = parseInt(words.style.height)//화면 가장 밑 값, 
+        let move_interval_ms = 1000//ms, 단어 나오는 속도
+        let move_block = 20//픽셀블럭, 단어 내려오는 길이
+        let game_alive = false // 게임 중 상태 판별
+        word.onfocus = start_game
+        function start_game(){
+            console.log("A")
+            if(game_alive){ // 게임 중이면 리턴
+                console.log("B")
+                return
+            }
+            txt_list = txt.split(",").map((val)=>val.trim())//정렬된 배열 하나씩 val에 할당 후, 공백 제거한 값을 리스트로
+            game_alive = true// 게임 중 이다.
+            interval_id = setInterval(move_words, move_interval_ms)
+            console.log("C")
+        }
+
+        //게임 끝
+        function end_game(){
+            clearInterval(interval_id)
+            words.innerHTML = ""
+            game_alive = false // 게임 끝났으니 다시 워드창에 포커스 두면 실행
+            defeated = 0    
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션</title>
+    <style>
+        #box{
+            border:5px solid red;
+            width: 600px;
+            align-self:center;
+
+            /*animation-name: border_ani;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease; */
+            animation: border_ani 5s infinite alternate ease;
+            overflow: hidden;
+        }
+        p{
+            position: relative;
+            float: right;
+            right: -80%;
+            animation: news 5s infinite normal linear;
+        }
+        p:hover{
+            animation-play-state: paused;
+        }
+        @keyframes border_ani {
+            0%{/*aka from*/
+                border-color: red;/*두께를 초기화 하지 않고 color 값을 주면 5px 자동 생성. border: red;는 0px에 적용*/
+            }
+            50%{
+                border-color: pink;
+            }
+            100%{/*aka to*/
+                border-color:blue;
+            }
+        }
+        @keyframes news {
+            from{
+                right: -80%;
+            }
+            to{
+                right: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h1>애니메이션</h1>
+        <p>태정태세문단세 예성연중인명선 광인효현숙경영 정순헌철고순</p>
+    </div>
+</body>
+</html>

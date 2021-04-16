@@ -1,0 +1,53 @@
+package skill;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+import java.io.FileInputStream;
+
+public class Solution{
+	
+	public static void main(String args[]) throws Exception{
+		
+		Scanner sc = new Scanner(System.in);
+		int T;
+		T=sc.nextInt();
+		String[][] won = new String[T][2];
+		for(int test_case = 1; test_case <= T; test_case++){
+			won[test_case-1][0] = sc.nextLine();
+			won[test_case-1][1] = sc.nextLine();
+//			for(int i : won[test_case-1]) {
+//				System.out.println(i);
+//			}
+		System.out.println("#"+test_case +" " + price(won[test_case-1]));	
+		} 
+	}
+
+	private static int price(String[] won) {
+		int[] arr = new int[won[0].length()];
+		for(int i = 0; i<arr.length;i++) {
+			arr[i] = won[0].charAt(i);
+		}
+		for(int i : arr) {
+			System.out.print(i);
+		}
+		System.out.println();
+//		Arrays.sort(arr, Collections.reverseOrder());
+		
+		return 0;
+	}
+}
+
+/*
+10
+123 1
+2737 1
+757148 1
+78466 2
+32888 2
+777770 5
+436659 2
+431159 7
+112233 3
+456789 10
+*/

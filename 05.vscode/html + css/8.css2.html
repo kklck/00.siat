@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS2</title>
+    <style>
+        h1 ~ h2{background:cyan}/*h1 다음에 오는 모든 h2*/
+        h1 + h2{background: yellow}/*h1 바로 뒤에오는 h2*/
+        h1{border: 3px dashed red}
+        h1:hover{border: 3px dashed red}
+        h1:hover + h2{border:3px dashed red}
+
+        .Singers > li{color:turquoise}/*11*/
+        ul>li{color:red}/*2*/
+        ul li{color:royalblue}/*2*/
+        li{color:rosybrown}/*1*/
+
+        /* input + span{display:none}input 바로 뒤에 오는 span 내용을 none */
+        /*input:focus + span{display:inline-block}input 클릭 시 위에 감췄던 내용이 inline */
+        input:focus + span{visibility:hidden}/*input 클릭 시 위에 감췄던 내용이 inline*/
+        
+    </style>
+</head>
+<body>
+    <h1>후손과 자손</h1>
+    <h2>좋아하는 가수</h2>
+    <ul class="Singers">
+        <li>아이유</li>
+        <li>소녀시대</li>
+    </ul>
+    <h2>프로그래밍 언어</h2>
+    <ol>
+        <li>자바</li>
+        <li>파이썬</li>
+    </ol>
+    <form action="">
+        이름 : <input type="text"><span>이름을 입력</span> END<!--input에서 내용을 디자인하기 위해--><br>
+        주소 : <input type="text"><span>주소를 입력</span>
+    </form>
+</body>
+</html>

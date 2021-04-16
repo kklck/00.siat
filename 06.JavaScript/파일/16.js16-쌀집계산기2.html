@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쌀집 계산기 v0.1</title>
+    <style>
+        #top_wrap{
+            border: 1px solid black;
+            width: 200px; height: 200px;
+            margin: 0 auto;
+        }
+        #result{
+            border: 1px dotted grey;
+            text-align: right;
+            font-size: 25px;
+            width: 180px; height: 40px;
+            margin: 7px auto;
+            background-color: rgb(230, 230, 230);
+            border-radius: 10px;
+        }
+        #bt{
+            width: 180px; height: 130px;
+            margin: 0 10%;
+        }
+        button{
+            width: 40px; height: 20px;
+        }
+        .number{
+            background: white;
+            border-radius: 3px;
+        }
+        .number:active{
+            background: grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="top_wrap">
+        <div id="result"></div>
+        <div id="bt"></div>
+    </div>
+    <script>
+        function make_buttons(){
+            let button_names = ["MC","MR","M+","M-",
+                                "%", "C", "<<", "/",
+                                "7", "8", "9", "X",
+                                "4", "5", "6", "-",
+                                "1", "2", "3", "+",
+                                "0", ".","+/-","="]
+            let bts = document.querySelector("#bt")//아래 bt와 혼선을 빚지 않기 위해 먼저 선언.
+            for(nm of button_names){
+                bts.innerHTML += `<button class="number">${nm}</button>`//<body>에 넣음.
+            }
+        }
+        make_buttons()
+        let bt = document.querySelectorAll("#bt>button")
+        let result = document.querySelector("#result")
+        let overwrite = true//덮어쓸지(true), 추가할지(false) 판별
+        let _tmp = ""//임시 변수
+        let _opr = ""//연산자 저장
+        let res = ""
+        let mplus = 0, mminus = 0
+        let point = 0// 소수점 판별
+        let front =""//앞에 오는 피연산자
+        let rear =""//뒤에 오는 피연산자
+        
+        function fn_bt_click(event){
+            let txt = event.target.textContent//해당 태그 탐색 후 값 반환., 누가 나를 눌렀냐
+            if(Number.isInteger(txt - 0))
+                process_number(txt)
+            else
+                process_char(txt)
+        }
+        function process_number(txt){
+            if(overwrite){
+                overwrite = false//숫자는 처음 한 번만 덮어쓰면 됌.
+                //덮어쓰기, 새로운 수를 처음 입력할 때
+                result.textContent = txt
+            }else{
+                //추가하기, 새로운 수를 만들기 위해
+                result.textContent += txt
+            }
+        }
+        function process_char(txt){
+            overwrite = true//다음 숫자 입력은 덮어쓰기 준비
+            let opr = "=+-X/%"//연산자 모음.
+            if(opr.indexOf(txt)>=0){//(txt=="="||txt=="+"||txt=="-"||txt=="X"||txt=="/")
+                process_opt(txt)
+                // alert(result.textContent + " : " + front + " : " + rear)
+                return
+            }
+            if(txt[0] == "M"){
+                process_memory(txt)
+                return
+            }
+            _tmp = Number(result.textContent)//완성된 수를 임시변수에
+            if(txt=="C"){
+                result.textContent =""
+                _tmp = 0
+                _opr =""
+                rear = ""
+                front = ""
+            }
+            pretxt = txt
+        }
+        function process_opt(txt){
+            if(front != ""){
+                _tmp = front
+            }
+            if(_opr=="+"){
+                result.textContent = Number(_tmp) + Number(result.textContent)
+            }else if(_opr=="-"){
+                result.textContent = Number(_tmp) - Number(result.textContent)
+            }else if(_opr=="X"){
+                result.textContent = Number(_tmp) * Number(result.textContent)
+            }else if(_opr=="/"){
+                result.textContent = Number(_tmp) / Number(result.textContent)
+            }else if(_opr=="%"){
+                result.textContent = Number(_tmp) % Number(result.textContent)
+            }
+            front = result.textContent
+            if(txt!="="){
+                _opr = txt
+            }
+        }
+        function process_memory(txt){
+            if(txt == "M+"){
+                mplus += Number(result.textContent)
+            }else if(txt == "M-"){
+                mminus += Number(result.textContent)
+            }else if(txt == "MR"){
+                result.textContent = mplus - mminus
+            }else if(txt == "MC"){
+                mminus = 0
+                mplus = 0
+            }
+        }
+        for(let i of bt){
+            i.onclick = fn_bt_click
+        }
+    </script>
+</body>
+</html>

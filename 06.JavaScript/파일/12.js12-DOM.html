@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            width: 100px;
+            background: orange;
+        }
+    </style>
+    <!-- <script>
+        window.onload = ()=>{//==document.onload = function(){}, 윈도우가 연결되어 있다면...
+            let h1 = document.querySelector("h1")
+            h1.textContent = "DOM 연습 끝"//해당 태그가 동작하지 않아도 해당 태그에 문자열 입력.<=>innerHTML
+            h1.style.background = "yellow"
+        }
+    </script> -->
+</head>
+<body>
+    <h1>DOM 연습</h1>
+    <ul>
+        <li>10</li>
+        <li>20</li>
+        <li>30</li>
+    </ul>
+    <!-- <script>
+        let lis = document.querySelectorAll("li")//위와 달리 li태그는 이미 동작을 했기 때문에 쉽게 동작한다.
+        lis[1].textContent = "<img src='DVB.jpg'>"
+        lis[2].innerHTML = "<img src='DVB.jpg'>"
+    </script> -->
+    <!-- <script>
+        let li = document.createElement("li") //<li></li> 생성
+        li.textContent = "40" //<li>40</li> 입력
+        let ul = document.querySelector("ul")//부모객체 생성
+        ul.appendChild(li)//부모와 자식 연결
+        ul.innerHTML += "<li>50</li>"//훨씬 간단하게 정의할 수 있지만, 특정 이벤트나 반응에 대응하기 위해서는 DOM API를 써야 함.
+    </script> -->
+    <script>
+        let counter = 0
+        let h1 = document.querySelector("h1")
+        h1.addEventListener("click",(event)=>{//h1 객체에서 클릭 이벤트 발생 시, 동작
+            counter++
+            h1.textContent = `클릭 횟수 : ${counter}`
+        })
+    </script>
+</body>
+</html>

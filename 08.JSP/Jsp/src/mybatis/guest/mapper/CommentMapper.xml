@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="CommentMapper"> <!-- 가급적 파일명과 같게 -->
+	<select id="selectComment" resultType="comment"><!--  parameterType="필요할 때만"  --> 
+		SELECT *
+		FROM comment_tab<!-- id 호출 시 sql 문장 수행 후 resultType에 맞게 반환 -->
+		ORDER BY comment_no
+	</select>
+	<select id="selectCommentByPrimaryKey" parameterType="long" resultType="comment"><!-- 원래 Lsit<Comment> 로 받음 -->
+		SELECT *
+		FROM comment_tab
+		WHERE comment_no = #{commentNo}
+	</select>
+	<insert id="insertComment" parameterType="comment">
+		INSERT INTO comment_tab(comment_no,
+				user_id,
+				comment_content,
+				reg_date)
+		VALUES(#{commentNo}, #{userId}, #{commentContent}, sysdate)
+	</insert>
+	<update id="updateComment" parameterType="comment">
+		UPDATE comment_tab
+		SET user_id = #{userId}, comment_content = #{commentContent}, reg_date = sysdate
+		WHERE comment_no = #{commentNo}
+	</update>
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM comment_tab
+		WHERE comment_no = #{commentNo}
+	</delete>
+</mapper>

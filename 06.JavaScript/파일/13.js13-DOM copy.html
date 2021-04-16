@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        window.onload = function(){ //옛 방식
+            let h1 = document.querySelector("h1")
+            console.log(h1.textContent)
+            h1s =document.querySelectorAll("h1")
+            console.log(h1s)
+            for(let i of h1s){
+                console.log(`h1s = ${i.textContent}`)
+            }
+        }
+    </script> -->
+    <script>
+        let fn_load = ()=>{ // == function fn_load(){
+            let h1 = document.querySelector("h1")
+            console.log(h1.textContent)
+            let h1s = document.querySelectorAll("h1")
+            console.log(h1s)
+            for(let i of h1s){
+                console.log(`h1s = ${i.textContent}`)
+            }
+        }
+        window.addEventListener("load", fn_load)//최근 방식, 모든 자원이 로드 되면~, load는 윈도우에서만 존재. document는 DOMContentLoaded로 로드
+    </script>
+</head>
+<body>
+    <h1>Hello JavaScript</h1>
+    <h1>Hello JavaScript2</h1>
+    <!-- <script>
+        //태그 검색
+        // let h1 = document.querySelector("h1")//h1객체를 탐색하기 전에 호출한다면 null
+        // alert(h1)        //object HTMLHeadingElement == h1~h6
+        // alert(h1.textContent)    //Selector 호출 시 첫 번째 객체 출력.
+        // console.log(h1)             //Selector 호출 시 첫 번째 객체 출력.
+        // h1s =document.querySelectorAll("h1")
+        // console.log(h1s)            //All 호출 시 NoodList로 출력
+        // for(let i of h1s){//h1s 각각의 값을 i에 할당
+        //     console.log(`h1s = ${i.textContent}`) //
+        // }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,84 @@
+*{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin: 0 auto;
+}
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+#wrap{
+  border: 1px solid black;
+  width: 1000px; height: 700px;
+  overflow: hidden;
+}
+#topBar{
+  border-bottom: 1px solid red;
+  width: 90%; height: 30px;
+  padding-top: 10px;
+}
+#topBg{
+  position: absolute;
+  width: 85%; height: 40px;
+  margin: 0 75px;
+  background-color:rgba(255, 1, 1, 0.123);
+}
+#topMenu{
+  width: 60%; height: 30px;
+  left: 310px;
+}
+ul{
+  list-style-type: none;
+}
+#topMenu li{
+  float: left;
+  margin: 0 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  border-left: 1px solid red;
+}
+#mainImage{
+  width: 100%; height: 100px;
+  text-align: center;
+  font-size: 60px;
+  color: rgb(255, 0, 0);
+  text-decoration: underline;
+}
+#midMenu{
+  position: flex;
+  width: 100%;height: 40px;
+  border: 1px solid red;
+}
+.mid_m{
+  width: 100px; height: 40px;
+  float: left;
+  text-align: center;
+  margin: 0 10px;
+}
+.mid_m>li{
+  float: left;
+  margin: 0 20px;
+  color: red;
+  text-align: center;
+  font-size: 30px;
+  width: 100px;
+  cursor: default;
+}
+.mid_s{
+  float: left;
+}
+.mid_s>div{
+  position: absolute;
+  float: left;
+  width: 400px;
+  margin-left: -30px; 
+}
+.mid_s li{
+  float: left;
+  display: none;
+  margin: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+}

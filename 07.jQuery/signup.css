@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
+*{
+    margin: 0; padding: 0;
+    position: relative;
+    font-size: 25px;
+}
+body{
+    font-family: 'Source Code Pro', monospace;
+}
+#wrap{
+    margin: 0 auto;
+    width: 600px; height: 900px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#title{
+    text-align: center;
+    height: 70px;
+    margin-top: 20px;
+}
+#title>h1{
+    font-size: 40px;
+}
+#form_div{
+    background: rgb(226, 176, 207);
+}
+form{
+    margin: 0 20px;
+}
+
+input[type="text"], input[type="password"]{
+    border: 0px;
+    border-radius: 5px;
+}
+#btn_div{
+    text-align: center;
+}
+.btn{
+    border: 0px;
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+    width: 150px; height: 40px;
+    color: white;
+}

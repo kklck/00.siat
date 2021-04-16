@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 등록 페이지</title>
+</head>
+<body align="center">
+    <h1>글 쓰기</h1>
+    <!-- <form> -->
+        <form action="http://localhost:6438/homeWork/Post.jsp">
+        제목 : <input size="50" type="text" name="title"><br>
+        ID : <input size="21"type="text" name="id"> PW : <input type="password" name="pw"><br>
+        <textarea name="content"cols="60" rows="10"></textarea><br>
+        스크랩 : <input type="radio" name="scrap" value="허용">허용
+                <input type="radio" name="scrap" value="비허용">비허용<br>
+        <input type="checkbox" name="browse" value="검색 허용">검색 허용
+        <input type="checkbox" name="browse" value="인기글 허용">인기글 허용
+        <input type="checkbox" name="browse" value="회원만 허용">회원만 허용<br>
+        <input type="submit" value="확인"><input type="reset" value="취소">
+    </form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+- 외부 css
+    - <style rel="stylesheet" type="text/css" href="~"></style>
+- 내부 css
+    - <style type="text/css"></style>
+
+- 외부 script
+    - <script typr="text/javascript" src="~"></script>
+- 내부 script
+    - <script type="text/javascript"></script>
+
+- 기본 필터 선택자
+    - first, last, even, odd, eq(n), lt(n), ft(n), not(~), contains(~)
+
+- 상태 판별
+    - is(":visible")
+
+- value 값 = val()
+
+- 값 지정
+    - attr("속성명","속성값")
+    - val("값")
+    - val(["값1","값2"])
+
+- 태그 옮기기
+    - 부모.append(자식) // 부모에게 자식을 붙힌다
+    - 자식.appendTo(부모) // 자식이 부모에게 속한다.
+
+- eclipse 에서만 WebContent 생략

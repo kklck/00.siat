@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let foods = ["탕수육", "짜장", "킹뽕"]
+        for(let i in foods){//인덱스
+            console.log(foods[i])
+        }
+        for(let i of foods){//값
+            console.log(i)
+        }
+        //forEach
+        function food_fn(value, index, array){
+            console.log("forEach " + value + " " + index + " " + array)//Ex)탕수육 0 탕수육, 짜장, 킹뽕
+        }
+        foods.forEach(food_fn)
+        //map
+        function foods_map(value){
+            return "중화요리 : " + value
+        }
+        let foods2 = foods.map(foods_map)
+        console.log("foods2 = " + foods2)//foods2 : 중화요리 : 탕수육,중화요리 : 짜장,중화요리 : 킹뽕
+        //filter
+        function foods_filter(value){
+            return value.length == 2
+        }
+        let foods3 = foods.filter(foods_filter)
+        console.log("foods3 = " + foods3)//foods3 = 짜장,킹뽕
+        //화살표 함수
+        let foods4 = foods.filter((value)=>{return value.length==3})
+        console.log("foods4 = " + foods4)//foods4 = 탕수육
+        let foods5 = foods.filter((value)=>value.length==3)
+        console.log("foods5 = " + foods5)//foods5 = 탕수육
+        //타이머 함수
+        function myfn(){
+            console.log("100")
+        }
+        setInterval("console.log('100')",1000)//500ms 마다 myfn 호출.
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

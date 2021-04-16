@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+		background-image: url("관동도감/대부.jpg");
+	}
+     #wrap{
+         width: 1500px;
+         position: relative;
+     }
+     #main_chat, #mafia_chat{
+         margin: 0;
+         width: 500px;
+         position: relative;
+         float: left;
+     }
+     #chat1{
+		opacity: 0;
+		animation: chat 2s nornal linear;
+	}
+	@keyframes chat{
+		0%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+    </style>
+</head>
+<body>
+    <div id="job">
+		<h3 id="job_h3"></h3>
+	</div>
+	<div id="wrap">
+  <form id="main_chat">	
+    <label>텍스트
+    	<input id="textMessage" type="text">	
+    </label><br>
+    <input onclick="sendMessage()" value="Send" type="button">	
+    <input onclick="disconnect()" value="Disconnect" type="button">	
+    <input onclick="gamestart()" value="Start" type="button">	
+  <br />	
+  <textarea id="messageTextArea" rows="10" cols="50"></textarea>	
+  </form>
+  <form id="mafia_chat">	
+    <label>텍스트
+    	<input id="textMessage2" type="text">	
+    </label><br>
+    <input onclick="sendMessage2()" value="Send" type="button">
+  <br />	
+  <textarea id="messageTextArea2" rows="10" cols="50"></textarea>
+  </form>
+  </div>
+  
+</body>
+</html>

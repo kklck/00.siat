@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 야구 게임 UI</title>
+    <style>
+        #top_wrap{
+            width: 500px;
+            border: 1px solid black;
+            margin: 0 auto;/*좌우 가운데 정렬 위한 auto 설정 시 width가 미리 설정되어 있어야 함.*/
+        }
+        h1, h2, h3, p{
+            text-align: center;
+        }
+        #input_num, #result{
+            width: 60%;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function user(){
+            let userNums = []
+            let userNum = ""
+            userNum = prompt("세 자리 숫자 입력\nEx)123")
+            if(userNum.length != 3){
+                alert("세 자리 숫자가 아닙니다.\n다시 입력해주세요.")
+                return user()
+            }
+            for(let i = 0; i<3; i++){
+                let n = Number(userNum.charAt(i))
+                if(userNums.indexOf(n)==-1){
+                    userNums.push(n)
+                }else{
+                    alert("숫자가 중복되었습니다.\n다시 입력해주세요.")
+                    return user()
+                }
+            }
+            return userNums
+        }
+        let count = 0
+        let comNums = []
+        while(comNums.length < 3){
+            let n = Math.floor(Math.random()*10)
+            if(comNums.indexOf(n)==-1){//배열 안에 같은 값이 없다면
+                comNums.push(n)
+            }
+        }
+        </script>
+</head>
+
+<body>
+    <div id="top_wrap">
+        <h1>숫자 야구 게임 UI</h1>
+        <h3 id="msg">메시지</h3>
+        <div id="input_num">
+            <button id="new_game">새 게임</button><!--클릭 이벤트-->
+            <input type="number" id="num" size="20" disabled><!--e를 제외하고 숫자만 할당 가능.-->
+            <button id="check_num" disabled>확인</button><!--클릭 이벤트-->
+        </div>
+        <div id="result">
+            <h2>결과</h2>
+        </div>
+    </div>
+    <script>
+        let num = document.querySelector("#num")
+        let check_num = document.querySelector("#check_num") // == let check_num = $("#check_num"), Jquery
+        let new_game = document.querySelector("#new_game")
+        let msg = document.querySelector("#msg")
+        let result = document.querySelector("#result")
+        //난수 생성
+        let c1, c2, c3
+        function make_ramdom() {
+            let num_arr = [0,1,2,3,4,5,6,7,8,9]
+            let pos = Math.floor(Math.random()*num_arr.length)//이미 가지고 있는 패를 섞고 하나 씩 방출하는 방식.
+            c1 = num_arr.splice(pos,1)[0]//해당 인덱스부터 1크기 만큼 지우고 지운 배열 값은 반환.
+            pos = Math.floor(Math.random()*num_arr.length)
+            c2 = num_arr.splice(pos,1)[0]
+            pos = Math.floor(Math.random()*num_arr.length)
+            c3 = num_arr.splice(pos,1)[0]
+        }
+        //엔터
+        num.onkeyup = function (event) {
+            if(event.keyCode == 13){
+                fn_check_num()//check_num.addEventListener("click", fn_check_num) 같은 동작.
+            }
+        }
+        //새 게임 클릭
+        new_game.onclick = function(){
+            num.removeAttribute("disabled")
+            check_num.removeAttribute("disabled")
+            new_game.setAttribute("disabled", "disabled")
+            make_ramdom()
+        }
+        //이벤트 등록(버튼)
+        check_num.addEventListener("click", fn_check_num)
+        function fn_check_num(){//check_num.onclick = function(){
+            //입력자 추출
+            if(num.value.length != 3){//num영역의 입력 값의 길이
+                msg.textContent = "세 자리 숫자를 입력하세요."
+                return
+            }
+            //판정
+            let strike = 0, ball = 0
+            let u1 = num.value[0]
+            let u2 = num.value[1]
+            let u3 = num.value[2]
+            if(u1==u2||u2==u3||u3==u1){
+                msg.textContent = "입력된 숫자에 중복이 존재합니다."
+                return
+            }
+            if(c1 == u1) strike++
+            if(c2 == u2) strike++
+            if(c3 == u3) strike++
+            if(u1 == c2||u1 == c3) ball++
+            if(u2 == c1||u2 == c3) ball++
+            if(u3 == c1||u3 == c2) ball++
+            // result.textContent = strike+"S " +ball+"B"
+            result.innerHTML += `<p>${num.value} : ${strike}S ${ball}B</p>`//textContent는 <p> 태그를 포함하지 않기 때문에 
+            num.value=""//이전 입력 값 삭제.
+            if(strike == 3){
+                alert("추카추카추")
+                msg.textContent = "새 게임 하실?"
+                result.innerHTML = "<h2>결과</h2>"
+                //new_game.onclick의 속성 설정의 역
+                new_game.removeAttribute("disabled")
+                num.setAttribute("disabled","disabled")
+                check_num.setAttribute("disabled","disabled")
+            }
+        }
+    </script>
+</body>
+</html>

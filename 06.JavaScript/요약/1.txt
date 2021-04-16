@@ -1,0 +1,107 @@
+- JavaScript
+    - 기존 html <title> 아래 또는 <body> 내 <script> 구현
+    - 패키지 동작은 없지만, 많은 함수 제공.
+    - 한 줄씩 읽기 때문에 세미콜론 필요 없음.
+
+- 변수
+    - Number, String, Boolean 등 있지만, 데이터 타입 지정하지 않고 let 사용.
+    - 추가적으로 많은 응용 타입 설정 가능.
+    - 함수 내 타입 지정 힘듬.
+    - String
+        - a = "Hello" // a[0] // H
+    - Number
+        - for(i=0;i<a.length;i++){} // 띄어쓰기 잘 안됌.
+    - Boolean 
+        - ===(양쪽이 같다), !==(양쪽이 다르다)
+        - "20" === 20 // false // 타입과 값 모두 같아야 함.
+        - "0", 0, [] : false <=> 나머지 : true
+    - Undefined
+        - 값 없이 선언만 한 변수, Null과 유사하지만 다름.
+        - let a // Undefined
+        - 콘솔 창에서 연산(식, 함수) 반환 값 없으면 Undefined 출력, 있으면 값 출력
+
+- 변수|연산식 포맷팅
+    - `${변수명}` 
+    - `(백틱) : 물결과 공유하고 있는 키, 1 옆
+
+- 오류 발견
+    - 검사(Ctrl + Shift + i) -> X표시 붉은 색 원 -> 오류 발견
+    - Java의 예외처리 동작과 흡사.
+
+- 경고 메시지
+    - alert(변수명)
+
+- 출력
+    - console.log(변수명)
+    - System.out.println과 흡사
+
+- 자료형 검사
+    - typeof(변수명)
+    - String, Number Boolean, Undefined, Function, Object, Symbol, Bigint 중 출력
+
+- 상수
+    - const 상수명 = 값
+    - 덮어쓰면 에러
+
+- 엄격 모드
+    - 'use strict'
+    - let 미사용, 변수 중복 선언 시 에러
+
+- 문자열 입력
+    - ans = prompt(메시지 창, 기본 입력 값)
+    - prompt에 문자열 하나 : 메시지 창, 기본 입력 값은 생략
+    - prompt 공백 가능
+
+- 불 입력
+    - ans = confirm(메시지 창)
+
+- 형 변환
+    - 숫자로 변환
+        - Number(자료), ParseInt(자료)
+    - 문자열로 변환
+        String(자료), 자료+"" -> "자료"
+    - 불로 변환
+        - Boolean(자료)
+        - 0, NaN, "", '', undefined, null : false
+
+- Math 함수
+    - .random : 0 ~ 0.9999... 사이 난수
+    - .floor : 소수점 아래 버림
+    - .ceil : 반올림
+
+- Date 객체
+    - d = new Date()
+    - .toDateString() // "Mon Mar 15 2021"
+    - .toLocalDateString() // "2021. 3 .15"
+    
+- 배열
+    - 삽입
+        - 배열명.push(요소)
+    - 삭제
+        - 배열명.splice(인덱스, 크기)
+            - itemsA.splice(2, 1) // 2번 인덱스에서 1크기 만큼 삭제 후 반환.
+        - 배열명.splice(배열명.indexOf(요소),1) // 해당 요소가 위치한 인덱스를 찾아 삭제 후 반환
+            - indexOf : 해당 요소가 없을 때는 -1
+- 반복문
+    - for(변수 in 배열){}
+        - forEach와 유사, 변수에 const 붙혀도 안붙혀도 됌.
+    - for(let 변수 = 0; 변수 < 5; 변수++){}
+        - 블록 단위의 지역변수를 유지하기 위해 let 필수.
+    - while(조건)
+
+
+-------------------------------
+과제
+
+숫자야구
+
+1. 중복 없는 일의 자리 난수 3개 저장
+2. 사용자가 임의로 지정.
+3. 스트라이크 : 같은 위치, 같은 숫자
+4. 볼 : 다른 위치, 같은 숫자
+5. 앞의 결과 누적하여 출력
+
+Ex) 입력 : 3, 1, 4 => 1S 0B
+
+6. 3S 될 때까지 반복
+* 배열은 더 힘들 수 있음

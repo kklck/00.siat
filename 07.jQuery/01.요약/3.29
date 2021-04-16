@@ -1,0 +1,60 @@
+- IDE
+    - 개발환경(Eclipse, VSCode)
+
+- 웹 구조
+    - 구조 : html
+    - 디자인 : css
+    - 동작 : JavaScript -> JQueryz
+
+- JQuery
+    - 덜 쓰고 더 있는, CSS3 지원, 크로스 브라우저
+    - 간결한 문법, 쉬운 사용, 다양한 플러그인, 브라우저 호환성 해결
+    - UI, 모바일 확장
+    - <script src="../lib/jquery-3.6.0.js"></script>
+
+- CND
+    - 구글 등 에서 제공하는 js 파일. 
+
+- inline : 개행 X, <span>
+- block : 개행 O, <div>
+
+- hide() : style = "display : none;"
+- empty() : 내부 값을 지움  
+
+- mouseenter : 마우스 들어오면
+- mouseleave : 마우스 나가면
+- hover : (mouseenter, mouseleave)
+
+- 변수 사용
+    - JavaScript 1~4 : var
+    - 5~6 : let(중복, 지역/전역 체크)
+
+- 효과함수 :fadeOut-fadeIn
+
+- ctrl + F5 : 브라우저가 코드를 다시 탐색
+
+- 다수의 속성은 객체로서 선언
+    - {"속성명1" : 속성값, "속성명2" : 속성값}
+
+- focus <-> blur
+
+- jquery의 get : 인자 없을 때
+- jquery의 set : 인자 있을 때
+
+- TextContent = Text()
+- innerHTML = html()
+
+- attr : 속성값 바꾸기
+    - attr("속성명", "속성값")
+
+====================================================
+
+Q. 둘의 차이 예제로
+
+1.  mouseenter <-> mouseleave
+    mouseover <-> mouseout
+
+2. this / $(this) 차이점
+    - 전자는 자바스크립트, 후자는 jquery
+
+3. find() filter() 차이점

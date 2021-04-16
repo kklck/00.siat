@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아약스 숫자맞히기 0.1</title>
+<style type="text/css">
+	h1{text-align: center ;}
+	#wrap{
+		border: 1px solid black;
+		width: 500px;
+		margin: 0 auto;
+	}
+</style>
+</head>
+<body>
+	<h1>아약스 숫자 맞히기 0.1</h1>
+	<div id="wrap">
+		<h2>1~100사이 숫자를 맞혀보세요.</h2>
+		<input id="num">
+		<div id="result">결과</div>	
+	</div>
+	<div></div>
+</body>
+</html>

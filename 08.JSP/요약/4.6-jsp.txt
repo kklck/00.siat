@@ -1,0 +1,67 @@
+ - WebContent = 하나의 Server
+
+ - 1. Java-DB 간 연동을 위한 드라이버 로딩
+ - 2. Java-DB 간 연결 객체 설정
+ - 3. sql문 지정
+ - 4. 전송 객체에 sql 저장
+ - 5. 전송 객체 실제 전송
+ - 6. 연결, 전송 객체 close();
+
+ - <%@ ~ %> : 디렉티브
+    - include file = "~.jsp"
+        - 웹 페이지에 고정된 요소가 있을 때(하단 정보창)
+        - JSP => Java, Class 변환 시 include 내용을 모두 컴파일
+    - page buffer="4kb"
+        - 전송 단위 버퍼 설정
+    - page errorPage="에러 발생 시 보여줄 페이지"
+        - page isErrorPage
+            - 에러 지정 페이지인지 판별
+- 파일 형식 지정자
+    - WEB : mimetype=""
+    - Java : ContentType=""
+
+- 파일 형식 재정의
+    - 여러 형식의 확장자를 붙여 배포
+    - 크롬은 자동 다운로드
+    - excel
+        - response.setContentType("application/vnd.ms-excel");
+    - word
+        - response.setContentType("application/msword");
+
+- 에러 예외처리
+    <error-page>
+        <exception-type>예외</exception-type>
+        <error-code>오류 번호</error-code>
+        <location>절대, 상대 경로</location>
+    </error-page>
+
+- form 태그
+    - 파라미터 읽기
+        - ?속성=값&속성=값
+        - 문자열 : getParameter()
+        - 배열 : getParameterValues()
+        - 파라미터 명 : getParameterNames() // 잘 안씀
+        - 맵(이름, 값) : getParameterMap() // 잘 안씀
+    - 파라미터 전송 방식
+        - get
+            - 파라미터 쿼리스트링, 프로토콜 헤더서 전송, 길이 제한, 노출
+        - post
+            - 비밀번호, 대용량, 프로토콜 바디서 전송 파일, 제한 없음, 감춤
+            - request.setCharacterEncoding("utf-8") // 재 인코딩 필요
+
+- 내장 객체
+    - jsp=>Java 변환 시 선언되는 변수
+    - request
+        - 서버 정보 읽기, form&Parameter 읽기, 요청 헤더 정보 처리, 클라이언트 전송 쿠키 읽기.
+    - response
+        - 응답에 헤더 추가, 리다이렉트(response.sendRedirect())
+        * 리다이렉트 : 기존 페이지 아래 선언하여 사용자가 선언한 페이지 url로 다시 접근하도록 요청을 바꿈.
+    - pageContext, session, out, config, page, exception, application
+
+- Model :
+- View :
+- Control :
+==============================
+- 폼처리 완벽 이해
+
+- 12장 읽기

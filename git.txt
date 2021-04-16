@@ -1,0 +1,73 @@
+//깃 버전
+git --version
+
+//유저네임 연동
+git config --global user.name kklck
+
+//이메일 연동
+git config --global user.email asdf5574@naver.com
+
+//디렉토리 이동
+cd c:\~~~
+
+//다운로드
+git clone https://github.com/kklck/hello-world.git
+
+// .git 폴더는 숨김 표시
+
+//정확한 파일 지정을 위해 디렉토리 이동
+cd hello-world
+
+//스테이지에 등록
+git add git.TXT
+
+//형상 버전 관리 위한 작업 및 설명 추가 (-m : 메시지 추가)
+git commit -m "텍스트 파일 추가 : git.txt"
+
+//스테이지에 올려둔 파일 저장소에 저장
+git push
+
+//깃 다운로드
+https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-64-bit.exe
+
+//깃 클라이언트
+https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-2.12.0.0-64bit.msi
+
+//한국어 팩
+https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-LanguagePack-2.12.0.0-64bit-ko.msi
+
+//루비
+https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.2-1/rubyinstaller-devkit-2.7.2-1-x64.exe
+
+//jeykyll
+gem install jekyll bundle
+bundle exec jekyll serve
+
+//Gemfile 수정
+ gem install github-pages x64-mingw32
+
+//원격 저장소?
+$ cd /Users/hwang/blog #지킬 웹 사이트 경로 들어가기
+$ git init // local 프로젝트를 깃으로 관리하겠다 ! 
+$ git add . // 해당 디렉토리에 있는 전체 내용을 스테이징한다 
+$ git commit -m "init" // 지금 상태를 commit
+﻿//계정 설정
+$ git config --global user.name "SwimmingHwang"
+$ git config --global user.email "test@test.com"
+$ git remote add origin https://github.com/username/username.github.io.git // 원격 저장소와 연결
+//계정과 원격 저장소가 잘 설정 되었는지 확인
+$ git config --list
+$ git push -u origin master // 원격 저장소에 로컬 저장소 내용을 업로드
+
+//warning: CRLF will be replaced by LF in some/file.file.
+git config --global core.autocrlf true
+
+
+//lfs 설정
+git init
+git lfs install
+git lfs track 파일
+git remote add origin url
+git add .
+git commit -m "메세지"
+git push -u origin +master

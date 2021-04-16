@@ -1,0 +1,53 @@
+- 이벤트 함수 선언
+    - ()=>{}
+    - function(){}
+    - 함수명
+
+- 이벤트 모델
+    - 표준
+        - document.body.addEventListener('이벤트명', ()=>{})
+        - 다른 모델과 달리 여러 함수 등록 가능.
+    - 고전
+        - Ex) document.doby.on이벤트명 = ()=>{}
+    - 인라인
+        - 초기 모델
+        - Ex) on이벤트명 = ()=>{}
+
+- 이벤트 종류
+    - 기본
+        - <a> 태그 클릭, 마우스 우클릭으로 메뉴, <form> 내에 submit 버튼
+    - 마우스
+        - 클릭, 포인터 이동, 우클릭 메뉴 동작 직전, 휠
+    - 드래그, 드롭
+        - dragstart, drag, dragend, dragenter, drageover, dragleave, drop
+    - 키보드
+        - 누르는 순간, 눌렀다 떼는 순간, 글자가 완성되는 순간
+    - 폼
+        - submit, reset, change, focus, blur, select
+    - 문서, 창
+        - 모두 로드 시, 구축 완료 시, 크기 변경, 스크롤 이동, 페이지 벗어남
+    - 기타
+        - 텍스트 입력, 해시 변경 시, 에러 발생 시
+
+- 속성 조작
+    - setAttribute(속성이름, 값) : 속성 지정
+    - getAttribute(속성이름) : 속성 추출
+    - removeAttribute(속성이름) : 속성 제거
+
+- 키보드 이벤트
+    - keycode : 아스키코드
+        - enter : 13
+
+- 스크립트로 값 지정
+    - <input> : value
+    - <div> : textContent
+
+- 배열 할당 법
+    - a = [30,40] // [x,y] = a // x => 30
+- 문자열 할당 법
+    - [x, y, z] = "김광운" // z => "운"
+-----------------------------------
+
+과제
+
+역방향 못가게

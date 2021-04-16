@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+JSP TEST<br>
+query = ${param.query}<br>
+<%
+	String str = request.getParameter("gender");//str에 파라미터를 통해 받은 gender 그룹의 선택 값이 저장
+	if(str.equals("male")){
+		out.print("남성");
+	}else if(str.equals("female")){
+		out.print("여성");
+	}
+%>
+</body>
+</html>

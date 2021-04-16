@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="EmpMapper"> <!-- 가급적 파일명과 같게 -->
+	<select id="selectEmp" resultType="hashmap"><!--  parameterType="필요할 때만"  --> 
+		SELECT *
+		FROM emp E, dept D<!-- id 호출 시 sql 문장 수행 후 resultType에 맞게 반환 -->
+		WHERE E.deptno = D.deptno
+	</select>
+</mapper>

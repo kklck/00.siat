@@ -1,0 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%!
+	int comNum = new java.util.Random().nextInt(100)+1;
+	int comNum2 = (int)Math.floor(Math.random()*100)+1;
+%>

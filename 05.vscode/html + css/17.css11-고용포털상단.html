@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고용포털 상단 연습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 1000px;
+            background-color: rgb(200,200,200);
+            margin: 0 auto;/*상하=0, 좌우=동일되어 가운데 정렬*/
+        }
+        #t_menu{float:right;}
+        #outer_1{overflow: hidden;}/*t_menu크기 만큼 설정 범위를 주고 싶으면 부모인 outer_1에 히든*/
+        /* #outer_2{overflow: hidden;} */
+        #outer_2>h1{
+            float: left;
+            margin:0;
+        }
+        #input{float: right;}
+
+        #outer_3{clear:both; position:relative;}
+        #outer_3 ul{list-style:none;}
+        #outer_3>ul{overflow: hidden;}
+        #outer_3>ul ul{position:absolute; display:none;}
+        #outer_3>ul>li{float:left; margin-right:30px;/*왼쪽에 밀착시키기 위해*/}
+        #outer_3>ul>li:hover>ul{display:inline;}
+        #outer_3 li li{float:left; margin-right:10px;}
+
+        #notice_wrap{overflow: hidden;}
+        .notice{
+            width: 470px ;
+            position: relative;
+            margin-top: 20px;
+            float: left;
+            border: 1px solid brown;
+            border-radius: 10px;
+            margin: 20px 5px;
+            padding: 5px;
+            box-shadow:-5px 5px 5px #A9A9A9;
+        }
+        .notice>ul{
+            padding: 20px;
+        }
+            .more{
+                position: absolute;/*부모가 relative|absolute 일 때만 가능. 별도로 block하지 않아도 이미지에 대한 크기 적용 가능*/
+                top: 10px;
+                right: 20px;
+                overflow: hidden;
+                text-indent: -200px;/* + 이미지 넣기 위해 해당 텍스트를 들여쓰기를 반대로 써 지워버림*/
+                background: url("https://www.worktogether.or.kr/images/main/btn_more.gif");
+                width: 24px;
+                height: 24px;
+            }
+        #n2{float: right}
+        #weather_div{
+            margin-top: 10px;
+            clear: both;
+        }
+        #weather{
+            display: block;/*이미지 파일은 블럭 해줘야 드러남*/
+            width: 60px; height: 60px;
+            text-indent: -200px;
+            background: url("https://s.pstatic.net/static/www/img/uit/2021/sp_weather_time_5f2bbb.png");
+            background-position: -65px -65px;/*타공판이 아닌 이미지 파일을 왼쪽으로 65, 위로 65 움직인 것.*/
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="outer_1"><!--최상단-->
+            <p id="t_menu">로그인 회원가입 마이페이지 고객센터 원격제어 사이트맵</p>
+        </div>
+        <div id="outer_2">
+            <h1>장애인 고용포털</h1>
+            <div id="input"><input type="text"></div>
+        </div>
+        <div id="outer_3">
+            <ul>
+			<li><h3>채용정보</h3>
+				<ul>
+					<li>채용정보 상세검색</li>
+					<li>지역별</li>
+					<li>업직종별</li>
+					<li>간편 우리지사 채용정보</li>
+					<li>기업형태별</li>
+                    <li>광운님 안녕</li>
+				</ul>
+			</li>
+			<li><h3>인재정보</h3>
+				<ul>
+					<li>인재상세검색</li>
+					<li>직종별</li>
+					<li>지역별</li>
+					<li>전공계열별</li>
+				</ul>
+			</li>
+			<li><h3>교육정보</h3>
+				<ul>
+					<li>교육안내</li>
+					<li>교육훈련정보</li>
+				</ul>
+			</li>
+			<li><h3>취업가이드</h3>
+				<ul>
+					<li>취업상담</li>
+					<li>직업능력평가</li>
+					<li>온라인 취업준비</li>
+					<li>장애인 A to Z</li>
+				</ul>
+			</li>
+			<li><h3>지원정책</h3>
+				<ul>
+					<li>장애인고용장려금안내</li>
+					<li>사업주지원제도안내</li>
+				</ul>
+			</li>
+		</ul></div>
+        <div id="notice_wrap">
+            <div class="notice">
+                <h3>공지사항</h3>
+                <ul>
+                    <li>[전북지사] 청완초등학교 교육공무직원(청소원) 장애인근...</li>
+                    <li>워크투게더 채용공고 접수마감시간 변경 안내</li>
+                    <li>[경기동부지사] "성남미래디자인 워크숍" 참석자 모집(...</li>
+                </ul>
+                <a href="" class="more">더보기</a>
+            </div>
+            <div class="notice" id="n2">
+                <h3>교육 훈련정보</h3>
+                <ul>
+                    <li>[창원맞춤훈련센터]중소벤처기업진흥공단 맞춤훈련생 모집</li>
+                    <li>★추가모집★ 2021년 SK(주)C&C 등 IT기업 연...</li>
+                    <li>[창원맞춤훈련센터]쿠팡풀필먼트서비스 맞춤훈련생 모집</li>
+                </ul>
+                <a href="" class="more">더보기</a>
+            </div>
+        </div>
+        <div id="weather_div">
+            <span id="weather">날씨</span>
+        </div>
+    </div>
+</body>
+</html>

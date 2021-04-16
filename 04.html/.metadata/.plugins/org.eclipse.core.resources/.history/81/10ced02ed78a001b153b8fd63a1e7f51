@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아약스 계산기</title>
+<script>
+</script>
+<style>
+	#wrap{
+		border: 1px solid black;
+		width: 700px;
+		margin: 0 auto;
+	}
+	#inner{
+		margin: 0 auto;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="inner">
+			<input id="num1">
+			<select id="opr">
+				<option value="">+</option>
+				<option value="">-</option>
+				<option value="">*</option>
+				<option value="">/</option>
+			</select>
+			<input id="num2">
+			<button id="calc">=</button>
+		</div>
+		<div id="result">결과</div>
+	</div>
+</body>
+</html>

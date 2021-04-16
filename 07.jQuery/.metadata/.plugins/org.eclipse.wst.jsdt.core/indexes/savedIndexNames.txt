@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\00.siat\07.jQuery\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1280429454.index
+2214046218.index
+3442178165.index
+1389659598.index
+3817403664.index
+3487183534.index
+3713507785.index

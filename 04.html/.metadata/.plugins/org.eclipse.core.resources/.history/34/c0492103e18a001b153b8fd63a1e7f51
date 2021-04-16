@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아약스 계산기</title>
+
+<style>
+	#wrap{
+		border: 1px solid black;
+		width: 700px;
+		margin: 0 auto;
+	}
+	#inner{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#result{
+		text-align: center;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type = "text/javascript">
+	window.onload = function(){
+		
+		document.querySelector("#calc").onclick = calc_click
+	}
+	function calc_click(){
+		let num1 = document.querySelector("#num1").value
+		let num2 = document.querySelector("#num2").value
+		let opr1 = document.querySelector("#sum").checked
+		let opr2 = document.querySelector("#sub").checked
+		let opr3 = document.querySelector("#mul").checked
+		let opr4 = document.querySelector("#div").checked
+		let opr5 = document.querySelector("#rem").checked
+		let opr6 = document.querySelector("#exp").checked
+		
+		opr = encodeURIComponent(opr)
+		console.log(opr)
+		
+		let opt = {}
+		opt.url = "calc.jsp?num1="+num1+"&num2="+num2+"&opr="+opr
+		opt.success = function(data){
+			document.querySelector("#result").textContent = data
+		}
+		$.ajax(opt) // url, success 모두 ajax에서 사용하는 함수
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="inner">
+			<input id="num1">
+			<input type="radio" id="sum" name="cal">+
+    		<input type="radio" id="sub" name="cal" value="sub">-
+    		<input type="radio" id="mul" name="cal" value="mul">*
+    		<input type="radio" id="div" name="cal" value="div">-
+    		<input type="radio" id="rem" name="cal" value="rem">%
+    		<input type="radio" id="exp" name="cal" value="exp">^
+			<input id="num2">
+			<button id="calc">=</button>
+		</div>
+		<div id="result">결과</div>
+	</div>
+</body>
+</html>

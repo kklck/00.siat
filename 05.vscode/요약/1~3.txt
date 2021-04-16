@@ -1,0 +1,57 @@
+Hyper Text Markup Language
+
+- <html lang = "en|ko">
+    - 한글 검색을 위해
+
+- <H1>~<H6>
+    - 글자 크기 보다는 중요한 것을 더 크게
+
+- 태그 속성
+    - class : 후에 정의를 통해 꾸밈, 중복될 수 있음.
+    - id : 태그의 고유 값, 중복될 수 없음.
+
+- 앵커 태그
+    - <a href = "도메인주소">누르면</a>
+        - href : Hyper Reference
+
+- 글자 형태
+    - <b> : 볼드, <i> : 이탤릭
+    - <small> : 작게
+    - <sub> : 아래 첨자, <sup> : 위 첨자
+    - <ins> : ?
+    - <del> : 취소선
+
+- 목록 태그
+    - <ul> Unordered List : 순서 없는 목록
+            <li> List Itme : 목록 요소</ul>
+    - <ol> Ordered List : 순서 있는 목록 </ol>
+            <li> List Itme : 목록 요소</ul>
+    - <dl> Definition List : 정의 목록
+        <dt> Definition Title : 정의 용어 </dt>
+        <dd> Defination Description : 정의 설명 </dd>
+
+- 유용한 패키지
+    live server(빠른 작성확인)
+    prettier - code - formatter
+    bracket - pair colorize
+    indent rainbow
+    Auto rename tag
+    css peek
+    HTML css support
+    Korean language pack(한글팩)
+
+
+------------------------------------------------------
+과제
+
+-> baroq8820006@gmail.com
+
+파일 명 : 김광운.html
+내용
+    1. 이름
+    2. 반 이름
+    3. 나이
+    4. 좋아하는 음식 순서로 5가지와 각각의 레시피 페이지 링크
+    5. 좋아하는 음식 중 하나 레시피를 목록으로 표기
+
+*1~3번은 헤드와 내용의 크기를 구분, h1, h2, p 등

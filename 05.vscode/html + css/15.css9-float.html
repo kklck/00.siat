@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Float 레이아웃</title>
+    <style>
+        #top{
+            background: grey;
+            width: 500px; height: 100px;
+        }
+        #left{
+            background: cyan;
+            width: 150px; height: 400px;
+            float: left;
+        }
+        #content{
+            background: yellowgreen;
+            width: 350px;height: 400px;
+            margin-left:150px;/*float:left와 달리 화면을 좁혀도 좌측 메뉴 밑으로 내려가지 않음.*/
+        }
+        #footer{
+            background: grey;
+            width: 500px;height: 100px;
+            clear: both;/*양 쪽 레이아웃을 모두 초기화*/
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        맨 위 메뉴
+    </div>
+    <div id="left">
+        좌측 메뉴
+    </div>
+    <div id="content"><!--left와 겹치게 한 후. margin-left 혹은 padding-left의 값을 늘려 띄울 수도 있음-->
+        우측 내용
+    </div>
+    <div id="footer">
+        하단 꼬릿말
+    </div>
+</body>
+</html>

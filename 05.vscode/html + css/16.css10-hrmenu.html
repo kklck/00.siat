@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수평 메뉴</title>
+    <style>
+        span{
+            display: inline-block;/*span은 원래 인라인 타입.*/
+            border: 1px solid red;
+        }
+        span:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        span:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        nav>ul{
+            list-style: none;/*점 제거, 패딩 공백 생성*/
+            padding: 0;/*패딩 공백 제거*/
+            overflow: hidden;/*ul의 높이만큼 쓰지말라*/
+        }
+        nav>ul>li{
+            float: left;/*이미지 취급*/
+            margin-left: 3px;
+        }
+        a{text-decoration: none;}
+        a:hover{text-decoration: underline;}
+        .item1>ul{display: none;}/*서브는 안보이게*/
+        #menu1 ul{list-style: none; padding-left: 0;}/*점 제거, 공백 제거*/
+        #menu1>ul>li{float: left; margin-left: 20px;}
+        #menu1>ul>li:hover>ul{display: block;}
+    </style>
+</head>
+<body>
+    <div>
+        <span>웹</span><span>모바일</span><span>게임</span><span>시뮬레이터</span><span>데이터</span>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="https://www.naver.com">네이버</a></li>
+            <li><a href="https://www.daum.net">다음</a></li>
+            <li><a href="https://www.yahoo.com">야후</a></li>
+        </ul>   
+    </nav>
+    <h2>메뉴끝</h2>
+    <div id="menu1">
+        <ul>
+            <li class="item1"><h3>장애인 지원</h3>
+                <ul>
+                    <li>구인 구직</li>
+                    <li>고용 알선</li>
+                </ul>
+            </li>
+            <li class="item1"><h3>사업주 지원</h3>
+                <ul>
+                    <li>지원 할 사람 손</li>
+                    <li>지원 받을 사람 손</li>
+                </ul>
+            </li>
+            <li class="item1"><h3>교육 훈련</h3>
+                <ul>
+                    <li>맞춤 훈련 센터</li>
+                    <li>고용 훈련</li>
+                </ul>    
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

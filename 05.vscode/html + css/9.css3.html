@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3</title>
+    <style>
+        table > tbody{background-color:yellow}
+        tr:first-child{background-color:yellowgreen}/*thead의 첫 째 & tbody의 첫 째*/
+        thead th:first-child{color:red}
+        tbody > tr:first-child > td:nth-child(n){color:blue}
+        a:link{text-decoration:none}
+        a:hover{text-decoration:underline}
+
+        body {background:url("https://www.weather.go.kr/images/icon/DY/DB01_B.png")}
+    </style>
+</head>
+<body>
+    <table><!--table>tr>th*2^tr>th*2.-->
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+        </tr>
+        </thead>
+        <tr>
+            <th>1</th>
+            <th>홍길덩</th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>김길덩</th>
+        </tr>
+    </table>
+    <a href="http://www.naver.com">넹잉벙</a>
+</body>
+</html>

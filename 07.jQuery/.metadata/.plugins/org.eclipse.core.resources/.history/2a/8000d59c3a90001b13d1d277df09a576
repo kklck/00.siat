@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0_basic.html</title>
+</head>
+<body>
+<!--
+    
+-->
+
+<div id="here">제쿼</div>
+
+<script src="../lib/jquery-3.6.0.js">
+    $("#here").hide
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS14</title>
+    <style>
+        ul{
+            border: 1px solid red;
+        }
+        li{
+            width: 150px;
+            margin: 5px 0;
+            background: orange;
+            transition: 0.5s;
+        }
+        ul>li:hover{
+            transform: translateX(20px);
+        }
+        ul>li:hover+li{/*커서 올린 li의 바로 다음 동위 li*/
+            transform: translateX(10px);
+        }
+        ul>li:hover~li{
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

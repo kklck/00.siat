@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>날씨 정보</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){// jQuery에서 윈도우 로드 : $(function(){})
+		document.querySelector("#news").onclick = news_click
+	}
+	function news_click(){
+		let opt = {}
+		opt.url="proxy_homework2.jsp"
+		let result = document.querySelector("#result")
+		opt.success = function(data){
+			
+		}
+		$.ajax(opt)
+	}
+</script>
+</head>
+<body>
+	<button id="news">조선일보</button>
+	<div id="result"></div>
+</body>
+</html>

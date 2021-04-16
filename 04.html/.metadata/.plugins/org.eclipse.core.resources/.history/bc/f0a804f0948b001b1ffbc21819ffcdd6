@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>날씨 정보</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){// jQuery에서 윈도우 로드 : $(function(){})
+		document.querySelector("#weather").onclick = weather_click
+	}
+	function weather_click(){
+		let opt = {}
+		opt.url="proxy_homework.jsp" //프록시 할당, 만일 바로 네이버 주면 동일출처에러
+		let result = document.querySelector("#result")
+		opt.success = function(data){
+			let loc = $(data).find("location")
+			let loc_c = 0
+			for(let i of loc){
+				let prov = $(i).find("province")[1].textContent
+				let city = $(i).find("city")[loc_c].textContent
+				let datas = $(i).find("data")
+				let str = `<div><p>${prov}</p><ul>${city}날씨`
+				console.log(prov)
+				loc_c++
+				data_c = 0
+				for(let j of datas){
+					let tmEf = $(i).find("tmEf")[data_c].textContent
+					let wf = $(i).find("wf")[data_c].textContent
+					str += `<li>${tmEf} ${wf}</li>`
+					data_c++
+				}
+				str += "</ul></div>"
+				result.innerHTML += str
+			}
+		}
+		$.ajax(opt)
+	}
+</script>
+</head>
+<body>
+	<button id="weather">날씨 예보</button>
+	<div id="result"></div>
+</body>
+</html>

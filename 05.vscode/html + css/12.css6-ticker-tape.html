@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>띠 뉴스</title>
+    <style>
+        #outer{
+        width: 300px;
+        border: 1px solid red;
+        overflow: hidden;/*자식이 부모의 영역을 넘으면 hidden, 부모 영역 밖을 hidden*/
+        }
+        #tape{
+        width:1200px;
+        position:relative;
+        left: 0px;
+        border: 1px solid blue;
+        transition-duration: 2s;/*변형 발생 시, 2초동안 진행*/
+        }
+        #tape:active{
+            left:-300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Position</h1>
+    <div id="outer"><!--div#outer>div#tape-->
+        <div id="tape">[속보] 나 졸려/[단독] 배고파/나 "열심히 할 것"</div>
+    </div>
+</body>
+</html>

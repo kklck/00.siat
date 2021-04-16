@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적테이블</title>
+    <script src="../lib/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#add").click(function(){
+                let t1 = $("#list").val();
+                let t2 = $("input[name='size']:checked").val();
+                let t3 = $("#color>option:selected").text();
+                if(t1!=""){
+                    $("#tbl").append("<tr><td>"+t1+"</td><td>"+t2+"</td><td>"+t3+"</td></tr>")
+                    $("#list").val("");
+                    $("input[name='size']").prop("checked",false)
+                    $("#color").val("red")
+                }
+            })
+        })     
+    </script>
+</head> 
+    <label>항목 : 
+        <input type="text" name="list" id="list">
+    </label><br><br>
+    <label>크기 : </label>
+        <input type="radio" name="size" value="대" class="size">대
+        <input type="radio" name="size" value="중"class="size">중
+        <input type="radio" name="size" value="소"class="size">소
+    <br><br>
+    <label>색상 : 
+        <input type="color" name="">
+        <select id="color">
+            <option value="red">빨간색</option>
+            <option value="green">초록색</option>
+            <option value="blue">파란색</option>
+        </select>
+    </label><br><br>
+    <button id="add">추가</button>
+    <br><br>
+    <table border="1" id="tbl">
+        <tr>
+            <td>항목</td>
+            <td>크기</td>
+            <td>색상</td>
+        </tr>
+    </table>
+</body>
+</html>

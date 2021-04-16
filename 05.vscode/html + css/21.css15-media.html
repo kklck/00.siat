@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--디바이스 설정 커멘드-->
+    <title>CSS15 MEDIA</title>
+    <style>
+        div{
+            border: 1px solid black;
+        }
+        @import url(p.css) print;/*장치를 구분하는 코드?*/
+        @media print{/*프린트 장치를 쓸 때*/
+            #foot{
+                display: none;/*보이지 않게 하라. Ex) 광고 제거 할 때 유용*/
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="top">TOP</div>
+    <div id="content">CONTENT</div>
+    <div id="foot">FOOT</div>
+</body>
+</html>

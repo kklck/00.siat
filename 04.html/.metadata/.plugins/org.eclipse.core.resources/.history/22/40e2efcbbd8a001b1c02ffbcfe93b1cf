@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%!
+	int comNum = new java.util.Random().nextInt(100)+1;
+	int comNum2 = (int)Math.floor(Math.random()*100)+1;
+%>
+<%=
+	request.getParameter("num")//파라미터의 num을 받겠다, %=이라 그대로 출력
+%>

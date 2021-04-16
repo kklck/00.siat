@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\00.siat\04.html\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3160680129.index
+23767992.index
+3932584967.index
+3688018716.index
+580466479.index

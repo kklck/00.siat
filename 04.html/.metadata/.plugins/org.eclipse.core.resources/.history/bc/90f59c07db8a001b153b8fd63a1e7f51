@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+
+<%
+	String num1Str = request.getParameter("num1");
+	String num2Str = request.getParameter("num1");
+	String oprStr = request.getParameter("num1");
+	
+	int num1 = new Integer(num1Str);
+	int num2 = new Integer(num2Str);
+	
+	int result = 0;
+	
+	if(oprStr == "+"){
+		result = num1 + num2;
+	}else if(oprStr == "-"){
+		result = num1 - num2;
+	}else if(oprStr == "*"){
+		result = num1 * num2;
+	}else if(oprStr == "/"){
+		result = num1 / num2;
+	}
+%>
+<%= result %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 입력양식</title>
+</head>
+<body>
+    <form action="http://localhost:8081/form_jsp/form_res.jsp">
+        <input type="color" name="mycolor"><br>
+        <input type="date" name="mydate" required="required"><br>
+        <input type="text" name="mydtext"><br>
+        <input type="search" name="mysearch"><br>
+        <textarea name="mytextrea" cols="30" rows="10"></textarea><br>
+        <label for="fav_food">좋아하는 분식?</label>
+        <select name="fav_food" id="fav_food">
+            <option value="0">김밥</option>
+            <option value="1">떡볶이</option>
+            <option value="2">순대</option>
+            <option value="3">어묵</option>
+        </select><br>
+        <label for="mygender">성별은?</label>
+        <select name="gender" id="mygender">
+            <option value="male">남</option>
+            <option value="female">여</option>
+        </select><br>
+        <label for="mygender">성별은2?</label>
+        <input type="radio" name="gender" id="male_gen">
+        <label for="male_gen">남</label>
+        <input type="radio" name="gender" id="female_gen">
+        <label for="female_gen">여</label>
+        <input type="submit" value="전송">
+    </form>
+</body>
+</html>

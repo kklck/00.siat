@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국장애인고용공단</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{list-style: none;}
+		.top{
+			background-color: #ffffff;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.main{
+			width: 1200px;
+			height: 92px;
+			position: relative;
+			overflow: hidden;
+		}
+		h1{float: left;}
+		.search{
+			position: relative;
+			margin-left: 50px;
+			width: 300px;
+			height: 60px;
+			float: left;
+			overflow: hidden;
+		}
+		.sns{
+			float: left;
+		}
+		.sns>ul>li{float: left;}
+		.main_tab{clear: both;position: relative;}
+		.main_tab>ul{overflow: hidden;}
+		.main_tab>ul ul{position: absolute; display: none;}
+		.main_tab>ul>li{float: left; margin-right: 30px;}
+		.main_tab>ul>li:hover>div>ul{display: block;}
+		.main_tab li li{float: left; margin-right: 10px;}
+		.down{left: 0;}
+		#d2{position: absolute;}
+	</style>
+</head>
+<body>
+    <div class="top">
+		<div class="main">
+            <h1><a href=""><img src="https://www.kead.or.kr/images/main_renew/logo.png" alt="한국장애인고용공단 로고"></a></h1>
+            <div class="search">
+				<input type="text"><input type="submit" value="검색">
+            </div>
+			<div>
+				<ul>
+				<li class="sns">
+					<ul>
+						<li><a href="http://blog.naver.com/kead1" target="_blank" title="새창"><img src="https://www.kead.or.kr/images/main_renew/sns_blog.gif" alt="블로그"></a></li>
+						<li><a href="http://www.facebook.com/hahakead" target="_blank" title="새창"><img src="https://www.kead.or.kr/images/main_renew/sns_facebook.gif" alt="페이스북"></a></li>
+						<li><a href="https://post.naver.com/my.nhn?memberNo=3501412" target="_blank" title="새창"><img src="https://www.kead.or.kr/images/main_renew/naver_post.png" alt="포스트"></a></li>
+					</ul>
+				</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main_tab">
+			<ul>
+				<li><h3>직장 내 장애인<br>인식개선 교육</h3>
+					<div class="down" id="d1">
+						<ul>
+							<li>제도설명</li>
+							<li>유의사항</li>
+							<li>직장 내 장애인 인식개선<br>교육포털 바로가기</li>
+						</ul>
+					</div>
+				</li>
+				<li><h3>장애인지원</h3>
+					<!-- <img src="https://www.kead.or.kr/images/main_renew/menu_img1.png" alt="장애인지원 장애인과 사업주가 함께하는 꿈과 희망의 기업" class="menu_img"> -->
+					<div class="down" id="d2">
+						<ul>
+							<li>온라인구인구직</li>
+							<li>고용알선</li>
+							<li>장애인취업성공패키지</li>
+							<li>온라인 취업준비사이트</li>
+							<li>직업능력평가</li>
+							<li>온라인직업심리검사</li>
+							<li>중증장애인지역맞춤형취업지원</li>
+							<li>보조공학기기지원</li>
+							<li>근로지원인지원</li>
+							<li>장애인 직업영역개발</li>
+							<li>직업재활시설 근로자 전환지원</li>
+							<li style="width: 195px;">장애인근로자지원센터 위탁사업</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

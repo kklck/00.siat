@@ -1,0 +1,251 @@
+/* @CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+*/
+body {
+	text-align: center;
+	margin: 0;
+    padding: 0;
+	font-family: Georgia, "Times New Roman", serif;
+}
+div{
+	position: relative;
+	border-right: 0.1px solid gray;
+}
+span{
+	font-size: 15px;
+}
+h1{
+	margin: 10px auto;
+	color: white;
+	width: 200px;
+	background: rgb(0, 173, 20);
+	border-radius: 20px;
+	border-bottom: 1px solid #18ab29;
+	padding: 10px;
+}
+.price{
+	font-size: 25px;
+	color: red;
+}
+.menu>img{
+	width: 150px; height: 150px;
+}
+#details>img{
+	width: 600px;
+	display: none;
+}
+#main_logo_div{
+	margin: 0 auto;
+}
+#wrap{
+	width: 1500px; height: 100%;
+	margin: 0 auto;
+}
+#leftdiv{
+	width: 1000px;
+	float:left;
+}
+#rightdiv{
+	margin-left: 10px;
+	float: left;
+	border: 2px solid #18ab29;
+	border-radius: 20px;
+}
+.myButton {
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 15px;
+	padding:10px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.menutbl{
+	margin: auto;
+}
+table{
+	border-collapse: separate;
+	border-spacing: 30px 0;
+}
+
+#nav {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#nav ul {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#nav ul li {
+	float: left;
+}
+
+#menu {
+	width: fit-content;
+	margin: 0 auto;
+	text-align: center;
+	background: #44c767;
+}
+
+.menu-item {
+	display: block;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+.main-menu {
+	padding: 10px 60px;
+}
+.sub-menu {
+	display: none;
+	position: absolute;
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.dropdown-menu:hover > ul {
+	display: block;
+}
+
+.sub-menu > li {
+	opacity: 0.7;
+	background-color: #44c767;
+	margin: 10px auto;
+	padding: 0 10px;
+	text-align: center;
+}
+li{
+	cursor: pointer;
+}
+#listTable{
+	margin:10px;
+	padding:0px;
+	border-collapse: collapse;
+}
+#listtitle{
+	height: 100px;
+	font-family: 'Jeju Gothic', serif;
+	background-color :#EEEAE3;
+}
+#listtr{
+	height:50px;
+	border-bottom: 1px dotted;
+	font-family: 'Nanum Gothic', serif;
+}
+#listTable td{
+	text-align : center;
+	border-bottom: 1px dotted;
+}
+#listTable td>img{
+	width: 20px; height: 20px;
+}
+#listTable td>img:hover{
+	cursor: pointer;
+}
+#buy{
+	font-size: 20px;
+}
+
+/*라디오박스*/
+.btn-switch {
+	font-size: 25px;
+	position: relative;
+	display: inline-block;		
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.btn-switch__radio {
+	display: none;
+}
+.btn-switch__label {
+	display: inline-block;	
+	padding: 10px;
+	vertical-align: top;
+	font-size: 1em;
+	font-weight: 700;
+	line-height: 1.5;
+	color: #666;
+	cursor: pointer;
+	transition: color .2s ease-in-out;
+}
+.btn-switch__label + .btn-switch__label {
+	padding-right: .75em;
+	padding-left: 0;
+}
+.btn-switch__txt {
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	min-width: 1.5em;
+	opacity: 1;
+	pointer-events: none;
+	transition: opacity .2s ease-in-out;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes .btn-switch__txt,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no .btn-switch__txt {
+	opacity: 0;
+}
+.btn-switch__label:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #f0f0f0;
+	border-radius: 1.5em;
+	box-shadow: inset 0 .0715em .3572em rgba(43,43,43,.05);
+	transition: background .2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label:before {
+	background: #6ad500;
+}
+.btn-switch__label_no:after {
+	content: "";
+	position: absolute;
+	z-index: 2;
+	top: .5em;
+	bottom: .5em;
+	left: .5em;
+	width: 20px;
+	background: #fff;
+	border-radius: 1em;	
+	pointer-events: none;
+	box-shadow: 0 .1429em .2143em rgba(43,43,43,.2), 0 .3572em .3572em rgba(43,43,43,.1);
+	transition: left .2s ease-in-out, background .2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:after {
+	left: calc(100% - 2.5em);
+	background: #fff;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes:before,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:before {
+	z-index: 1;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_yes {
+	color: #fff;
+}

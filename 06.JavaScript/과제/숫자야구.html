@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+    <script>
+        function user(){
+            let userNums = []
+            let userNum = ""
+            userNum = prompt("세 자리 숫자 입력\nEx)123")
+            if(userNum.length != 3){
+                alert("세 자리 숫자가 아닙니다.\n다시 입력해주세요.")
+                return user()
+            }
+            for(let i = 0; i<3; i++){
+                let n = Number(userNum.charAt(i))
+                if(userNums.indexOf(n)==-1){
+                    userNums.push(n)
+                }else{
+                    alert("숫자가 중복되었습니다.\n다시 입력해주세요.")
+                    return user()
+                }
+            }
+            return userNums
+        }
+        let comNums = []
+        let count = 0;
+        while(comNums.length < 3){
+            let n = Math.floor(Math.random()*10)
+            if(comNums.indexOf(n)==-1){//배열 안에 같은 값이 없다면
+                comNums.push(n)
+            }
+        }
+        </script>
+</head>
+<body>
+    <script>
+        while(true){
+            let strike = 0
+            let ball = 0
+            let userNums = user()
+            // for(let i = 0; i<3; i++){
+            //     userNums[i] = prompt((i+1)+"번째 숫자")
+            // }
+            for(let i = 0; i<3; i++){
+                if(userNums[i] == comNums[i]){
+                    strike++
+                    continue
+                }
+                for(let j = 0; j<3; j++){
+                    if(userNums[i] == comNums[j]){
+                        ball++
+                    }
+                }
+            }
+            alert(strike+"S " +ball+"B")
+            count++
+            if(strike == 3){
+                alert(count+"번 만에 이겼다!")
+                break
+            }
+        }
+        console.log(strike+"S " +ball+"B")
+    </script>
+</body>
+</html>

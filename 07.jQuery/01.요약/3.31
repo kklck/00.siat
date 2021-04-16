@@ -1,0 +1,17 @@
+- 클래스 선택자 지정 시 .each 함수 안에 this로 선언해야 각각 동작 가능
+    - JQuery에서 동작하지 않는다면 JavaScript로
+        - $(this).text() = this.textContent
+
+//같은 동작
+= body>ul>li:nth-child(1) : 각 그룹 첫 번째 요소
+= body>ul>li:first-of-type : 형제 중 자신과 같은 요소
+= body>ul>li:first-child : 부모의 첫 자식 요소
+= ("body>ul").find("li:first") : 지정 범위에서 첫 번째 요소
+
+- 커서 css
+    .css({"cursor":"pointer"})
+
+- 동적 생성 요소에 이벤트 넣기
+    부모.on(이벤트, 자식, 함수)
+
+- animate({"속성명1":"속성값1",....}, 밀리초)

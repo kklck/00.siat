@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\00.siat\04.html\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3688018716.index
+\websocket_exam\src
+C:\00.siat\04.html\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3363259711.index
+\form_jsp\src
+C:\00.siat\04.html\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2464311114.index
+\mafia\src

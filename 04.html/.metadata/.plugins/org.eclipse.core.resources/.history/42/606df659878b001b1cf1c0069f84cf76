@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>날씨 정보</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){// jQuery에서 윈도우 로드 : $(function(){})
+		document.querySelector("#weather").onclick = weather_click
+	}
+	function weather_click(){
+		let opt = {}
+		opt.url="proxy_weather.jsp" //프록시 할당, 만일 바로 네이버 주면 동일출처에러
+		opt.success = function(data){
+			//alert(data) //=> [object XMLDocument]
+			let ctg = $(data).find("category")[0].textContent//인덱스 형태가 아닌 첫 번째 카테고리 태그
+			let result = document.querySelector("#result")
+			result.innerHTML = "<h2>동네 이름 : " + ctg + "</h2>"
+			//날씨는 <data>안에 3시간 단위로 저장되기 때문에, 추출 후 한 번 더 검색.
+			let datas = $(data).find("data")
+			let days = ["오늘", "내일", "모레"]
+			for(let dt of datas){
+				//서브태그 검색
+				let hour = $(dt).find("hour")[0].textContent
+				let day = $(dt).find("day")[0].textContent
+				day = days[day]
+				let temp = $(dt).find("temp")[0].textContent
+				let wfkor = $(dt).find("wfKor")[0].textContent
+				let pty = $(dt).find("pty")[0].textContent
+				let sky = $(dt).find("sky")[0].textContent
+				let n = (Number(pty)+Number(sky))
+				if(hour>=18 || hour<=6){
+					n += "_N"
+				}
+				//day = (day==0)?"오늘":(day==1)?"내일":"모레"
+				let imgurl = `https://www.weather.go.kr/images/icon/DY/DB0${n}.png`
+				let str = `<div>${day} ${hour}시 ${temp}℃ ${wfkor}<img src="${imgurl}"></div>`
+				result.innerHTML += str
+			}
+		}
+		$.ajax(opt)
+	}
+</script>
+</head>
+<body>
+	<button id="weather">날씨 예보</button>
+	<div id="result"></div>
+</body>
+</html>

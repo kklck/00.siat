@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if</title>
+    <script>
+        let r = Math.floor(Math.random()*100+1)
+    </script>
+</head>
+<body>
+    <script>
+        while(true){
+            let ans = prompt("1~100 사이 숫자")
+
+            //#1
+            // if(ans == r){
+            //     alert("추카추카추")
+            //     break;
+            // }else if(ans < r){
+            //     alert("더 높아요")
+            // }else{
+            //     alert("더 낮아요")
+            // }
+
+            //#2
+            alert(result = (ans == r)? "추카추카추" : (ans < r)? "더 높아요" : "더 낮아요")
+            if(result == "정답"){break;}
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 1. 프로퍼티 지정 방식
+		- 프로퍼티 담는 생성자-->
+	<bean id="member" class="ex2_value_ref.MemberBean">
+		<constructor-arg value="홍길동"></constructor-arg>
+		<constructor-arg value="33"></constructor-arg>
+		<constructor-arg><value>안녕</value></constructor-arg>
+	</bean>
+<!-- 	- setter함수 -->
+	<bean id="member2" class="ex2_value_ref.MemberBean">
+		<property name="name" value="또길동"></property>
+		<property name="age"><value>44</value></property>
+		<property name="message" value="어디로가요"></property>
+	</bean>
+<!-- 2. 참조형 멤버변수 지정
+		- 생성자 이용 -->
+	<bean id="dao" class="ex2_value_ref.MemberDAO">
+		<constructor-arg ref="member"></constructor-arg>
+	</bean>
+<!-- 	- setter함수 -->
+	<bean id="dao2" class="ex2_value_ref.MemberDAO">
+		<property name="bean" ref="member2"></property><!-- property(set) + name(Bean) => setName() 호출 -->
+	</bean>
+</beans>

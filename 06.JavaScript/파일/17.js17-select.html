@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select 태그 이벤트 연습</title>
+</head>
+<body>
+    <h2>좋아하는 음식을 고르세요</h2>
+    <select name="" id="food"><!--id 는 css, script 용-->
+        <option value="p1">라면</option>
+        <option value="p2">닭발</option>
+        <option value="p3">훈제</option>
+    </select>
+    <div id="msg">0 : p1 라면</div>
+    <script>
+        let food = document.querySelector("#food")
+        let msg = document.querySelector("#msg")
+        food.onchange = (event)=>{//옵션 값을 새로 할당.
+            let idx = event.target.options.selectedIndex //인덱스 번호 지정 0,1,2
+            let value = event.target.options[idx].value //벨류 값 지정 p1,p2,p3
+            let text = event.target.options[idx].textContent //내용 지정. 라면,닭발,훈제
+            msg.textContent = `${idx} : ${value} ${text}`
+        }
+    </script>
+</body>
+</html>

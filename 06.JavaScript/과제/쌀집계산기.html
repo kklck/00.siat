@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쌀집 계산기 v0.1</title>
+    <style>
+        #top_wrap{
+            border: 1px solid black;
+            width: 200px; height: 200px;
+            margin: 0 auto;
+        }
+        #result{
+            border: 1px dotted grey;
+            text-align: right;
+            font-size: 25px;
+            width: 180px; height: 40px;
+            margin: 7px auto;
+            background-color: rgb(230, 230, 230);
+            border-radius: 10px;
+        }
+        #bt{
+            width: 180px; height: 130px;
+            margin: 0 auto;
+        }
+        button{
+            width: 40px; height: 20px;
+        }
+        .number{
+            background: white;
+            border-radius: 3px;
+        }
+        .number:active{
+            background: grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="top_wrap">
+        <div id="result">   
+        </div>
+        <div id="bt">
+            <button>MC</button>
+            <button>MR</button>
+            <button>M+</button>
+            <button>M-</button>
+            <button>%</button>
+            <button>C</button>
+            <button>&lt;&lt;</button><!--<를 부호화-->
+            <button>/</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button>X</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button>-</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button>+</button>
+            <button class="number">0</button>
+            <button class="number">.</button>
+            <button>+/-</button>
+            <button>=</button>
+        </div>
+    </div>
+    <script>
+        let bt = document.querySelectorAll("#bt>button")
+        let result = document.querySelector("#result")
+        let point = 0// 소수점 판별
+        let front =""//앞에 오는 피연산자
+        let rear =""//뒤에 오는 피연산자
+        let check_rear = 0//피연산자 판별
+        let cal =""//연산자
+        let pretxt = ""//이전 연산자, 연산자의 반복 방지
+
+        function num(txt){
+            if(result.textContent == "0")//0 연속으로 오면
+                return
+            if(cal != ""&&check_rear == 0){//연산자가 있고, 리어 값을 새로 입력하려면
+                result.textContent =""//화면 초기화
+                check_rear=1//화면 초기화는 한 번 하고자
+            }
+            if(cal != ""){//연산자가 있으면
+                rear += txt//리어에 값 축척
+            }
+            result.textContent += txt
+        }
+        function check_point(txt){
+            if(result.textContent == ""||result.textContent == "0"){//화면에 널이나 0값이 있다면
+                result.textContent = "0."
+            }else{
+                result.textContent += txt
+                point++//소수점은 하나만
+            }
+        }
+        function clear(){
+            result.textContent=""//화면 초기화
+            point=0//소수점 초기화
+            front=""
+            cal=""
+            rear=""
+        }
+        function is(txt){
+            if(cal=="+"){
+                result.textContent = Number(front) + Number(rear)
+            }else if(cal=="-"){
+                result.textContent = Number(front) - Number(rear)
+            }else if(cal=="X"){
+                result.textContent = Number(front) * Number(rear)
+            }else if(cal=="/"){
+                result.textContent = Number(front) / Number(rear)
+            }
+            check_rear=0//연산이 끝나면 다시 새로운 리어값 받을 준비
+            if(pretxt=="+"||pretxt=="-"||pretxt=="X"||pretxt=="/"||txt!="="){
+                cal=""//연산자의 반복 방지
+                rear=""//리어값 축적 중지
+            }
+        }
+        function back(){
+            if(result.textContent !=""){//화면에 값이 있을 때
+                let res = result.textContent
+                result.textContent = res.substr(0,res.length-1)//마지막 자리만 빼기
+            }
+        }
+        function check_cal(txt){
+            if(rear !=""){//리어 값이 있으면, 이전 연산 시 리어 값은 초기화 됌.
+                is(txt)
+            }
+            cal = txt
+            front = result.textContent//중간 결과는 모두 프런트로
+        }
+        function fn_bt_click(event){
+            let txt = event.target.textContent//해당 태그 탐색 후 값 반환.
+            if(isNaN(txt)==false){//숫자가 아닌 게 거짓이면, 숫자라면
+                num(txt)
+            }else if(txt=="."&&point == 0){//처음으로 소수점 누를 때
+                check_point(txt)
+            }else if(txt=="C"){//클리어
+                clear()
+            }else if(txt=="="){//연산
+                is(txt)
+                front = result.textContent
+            }else if(txt=="<<"){//지우기
+                back()
+                front = result.textContent
+            }else{//나머지, 연산자
+                if(pretxt!="+"||pretxt!="-"||pretxt!="X"||pretxt!="/")// 연산자가 중복되지 않으면
+                    check_cal(txt)
+            }
+            // alert(Number(result.textContent) + " : " + Number(front) + " : " + cal + " : " + Number(rear) + " : " + check_rear + " : " + pretxt)
+            pretxt = txt
+        }
+        for(let i of bt){
+            i.onclick = fn_bt_click
+        }
+    </script>
+</body>
+</html>

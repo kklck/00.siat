@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        #d1, #d2, #d3{width: 150px; height: 100px;}
+        #d1{
+            background: blue;
+        }
+        #d2{
+            background: yellow;
+            left: 50px; top: 50px;
+            position: absolute;
+        }
+        #d3{
+            background:cyan;
+        }
+        #d2p{
+            position: relative;/*자식이 absolute면 대부분 부모는 relative,*/
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">111</div>
+    <div id="d2p">
+        <div id="d2">222</div>
+    </div>
+    <div id="d3">333</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\00.siat\04.html\.metadata\.plugins\org.eclipse.jdt.core
+3932584967.index
+1385265733.index
+1499898735.index
+428600598.index
+237499996.index
+23767992.index
+3160680129.index

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아약스 계산기</title>
+
+<style>
+	#wrap{
+		border: 1px solid black;
+		width: 700px;
+		margin: 0 auto;
+	}
+	#inner{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#result{
+		text-align: center;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	window.onload = function(){
+		document.querySelector("#calc").onclick = calc_click
+	}
+	function calc_click(){
+		let xhr = new XMLHttp
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="inner">
+			<input id="num1">
+			<select id="opr">
+				<option value="">+</option>
+				<option value="">-</option>
+				<option value="">*</option>
+				<option value="">/</option>
+			</select>
+			<input id="num2">
+			<button id="calc">=</button>
+		</div>
+		<div id="result">결과</div>
+	</div>
+</body>
+</html>

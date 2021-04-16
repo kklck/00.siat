@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 시계</title>
+    <style>
+        #clock{
+            width: 200px; height: 200px;
+            border: 1px solid black;
+            border-radius: 100px;
+            position: relative;
+        }
+        #hour{
+            width: 13px; height: 60px;
+            background: black;
+            transform-origin: 50% 80%;
+            transition: 36s linear;
+            position: absolute;
+            left: 100px; bottom: 100px;
+        }
+        #clock:hover>#hour{
+            transform: rotate(360deg);
+        }
+        #min{
+            width: 10px; height: 100px;
+            background: black;
+            transform-origin: 50% 100px;
+            left: 90px;
+            position: absolute;
+            animation: min_ani 36s infinite normal linear;
+        }
+        @keyframes min_ani {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        #sec{
+            width: 5px; height: 120px;
+            background: red;
+            transform-origin: 50% 100px;/*바늘의 100px부분이 중심이 됨*/
+            /* transform: rotate(60deg); */
+            transition: 60s linear;
+            position: absolute;
+            left: 100px;
+        }
+        #clock:hover>#sec{
+            transform: rotate(360deg);
+        }
+        #n3{
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 50%;
+            transform-origin: 5px 100px;
+            transform: rotate(90deg);
+        }#n12{
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 90px;
+        }#n6{
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 90px; bottom: 0;
+        }#n9{
+            position: absolute;
+            width: 16px; height: 16px;
+            left: 0; bottom: 50%;
+            transform: rotate(270deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+        <div id="n3">3</div>
+        <div id="n12">12</div>
+        <div id="n6">6</div>
+        <div id="n9">9</div>
+    </div>
+</body>
+</html>

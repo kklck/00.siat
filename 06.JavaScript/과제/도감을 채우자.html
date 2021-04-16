@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포켓몬 마스터 v1.0</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #wrap{
+            width: 1500px; height: 1100px;
+            margin: 0 auto;
+            display: none;
+            position: relative;
+        }
+        #words{
+            width: 1500px; height: 600px;
+            margin: 0 auto;
+            position: relative;/*h3을 앱솔루트 하기 위한*/
+        }
+        #back{
+            width: 1500px; height: 600px;
+            position: absolute;
+            background-image: url("관동도감/왼.png");
+            opacity: 0.7;
+        }
+        #words > h3{
+            position: absolute;
+            margin: 0;
+            transition: 2s linear;
+        }
+        #words > #left, #words > #top{
+            top: 0px;
+            left: 0px;
+        }
+        #words > #right{
+            top: 0px;
+            right: 0px;
+        }
+        span{
+            animation: opac 20s none normal linear;
+            font-size: 30px;
+        }
+        @keyframes opac {
+            0%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        #input{
+            position: relative;
+            width: 1490px; height: 250px;
+            margin: 0 auto;
+            display: flex;/*자식들을 유연하게 가로정렬*/
+            background-image: url("관동도감/텍스트박스.png");
+        }
+        #input>div{
+            margin: 100px 100px;
+            width: 220px;
+            font-size: 20px;
+        }
+        #word{
+            font-size: 30px;
+        }    
+        #play{
+            margin: 0 auto;
+            text-align: center;
+        }
+        #vol{
+            margin: 0 auto;
+            display: none;
+        }
+        #vol_div{
+            width: 150px;;
+            margin: 0 auto;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <audio loop id="easy"><!--controls 속성 : 오디오 제어 바 생성-->
+        <source src="관동도감/연두마을.mp3" type="audio/mpeg"><!--먼저 온 소스만 표시, 해당 파일이 없으면 다음으로.-->
+    </audio>
+    <audio loop id="hard">
+        <source src="관동도감/레드.mp3" type="audio/mpeg">
+    </audio>
+    <h1>도감을 채우자 v1.0</h1>
+    <div id="vol_div"><input type="range" id="vol" min="0" max="1" step="0.1"></div>
+    <div id="wrap">
+        <div id="words">
+            <div id="back"></div>
+            <h1 id="pokemon"></h1>
+            <!--낱말이 내려오는 디스플레이, 내부에 수 많은 div 태그에 낱말을 넣음. -->
+        </div>
+        
+        <div id="input"><!--낱말을 입력하는 창-->
+            <div id="score">잡은 포켓몬 수 : </div>
+            <div>
+                <input type="text" id="word">
+            </div>
+            <div id="fail">놓친 포켓몬 수 : </div>
+        </div>
+    </div>
+    <div id="play">
+        <h1>------------------------------------<br>설명서</h1>
+        <h2>포켓몬 151마리가 양 옆에서 당신을 향해 달려옵니다<br>
+            포켓몬의 모습을 보고 이름을 입력하면 고개를 돌려 몬스터볼을 던집니다<br>
+            10마리 잡을 때 마다 포켓몬이 더욱 빠르게 다가옵니다<br>
+            가까이 다가 올수록 포켓몬은 자신의 이름을 알려줍니다<br>
+            다 잡으면 어떻게 될지 궁금하시다면, 유료버전을 이용해주세요
+            </h2>
+        <h1>------------------------------------</h1>
+        <h1>난이도</h1>
+        <button id="play1">EASY</button>
+        <button id="play2">HARD</button>
+    </div>
+    <script>
+        let wrap = document.querySelector("#wrap")
+        let words = document.querySelector("#words")
+        let back = document.querySelector("#back")
+        let word = document.querySelector("#word")
+        let score = document.querySelector("#score")
+        let fail = document.querySelector("#fail")
+        let pokemon = document.querySelector("#pokemon")
+        let play = document.querySelector("#play")
+        let play1 = document.querySelector("#play1")
+        let play2 = document.querySelector("#play2")
+        let easy = document.querySelector("#easy")
+        let hard = document.querySelector("#hard")
+        let vol = document.querySelector("#vol")
+
+        vol.onclick = ()=>{
+            easy.volume = vol.value//볼륨 지정 후 play
+            hard.volume = vol.value//볼륨 지정 후 play
+        }
+        
+        play1.onclick = ()=>{
+            wrap.style.display = "inline"
+            vol.style.display = "inline"
+            move_interval_ms = 1000//ms, 단어 나오는 속도
+            move_block = 20//픽셀블럭, 단어 내려오는 길이
+            cycle = 5
+            interval_id = setInterval(move_words, move_interval_ms)
+            play.style.display = "none"
+            easy.play()
+        }
+        play2.onclick = ()=>{
+            wrap.style.display = "inline"
+            vol.style.display = "inline"
+            move_interval_ms = 500//ms, 단어 나오는 속도
+            move_block = 20//픽셀블럭, 단어 내려오는 길이
+            cycle = 3
+            interval_id = setInterval(move_words, move_interval_ms)
+            play.style.display = "none"
+            hard.play()
+        }
+        let sucess = 0, defeated = 0, start = 0, cycle = 0, move_interval_ms = 0, move_block = 0, interval_id =""
+        let poke_list = [["이상해씨",""],
+                ["이상해풀", ""],
+                ["이상해꽃", ""],
+                ["파이리", ""],
+                ["리자드", ""],
+                ["리자몽", ""],
+                ["꼬부기", ""],
+                ["어니부기", ""],
+                ["거북왕", ""],
+                ["캐터피", ""],
+                ["단데기", ""],
+                ["버터플", ""],
+                ["뿔충이", ""],
+                ["딱충이", ""],
+                ["독침붕", ""],
+                ["구구", ""],
+                ["피죤", ""],
+                ["피죤투", ""],
+                ["꼬렛", ""],
+                ["레트라", ""],
+                ["깨비참", ""],
+                ["깨비드릴조", ""],
+                ["아보", ""],
+                ["아보크", ""],
+                ["피카츄", ""],
+                ["라이츄", ""],
+                ["모래두지", ""],
+                ["고지", ""],
+                ["니드런(여)", ""],
+                ["니드리나", ""],
+                ["니드퀸", ""],
+                ["니드런(남)", ""],
+                ["니드리노", ""],
+                ["니드킹", ""],
+                ["삐삐", ""],
+                ["픽시", ""],
+                ["식스테일", ""],
+                ["나인테일", ""],
+                ["푸린", ""],
+                ["푸크린", ""],
+                ["주뱃", ""],
+                ["골뱃", ""],
+                ["뚜벅쵸", ""],
+                ["냄새꼬", ""],
+                ["라플레시아", ""],
+                ["파라스", ""],
+                ["파라섹트", ""],
+                ["콘팡", ""],
+                ["도나리", ""],
+                ["디그다", ""],
+                ["닥트리오", ""],
+                ["나옹", ""],
+                ["페르시온", ""],
+                ["고라파덕", ""],
+                ["골덕", ""],
+                ["망키", ""],
+                ["성원숭", ""],
+                ["가디", ""],
+                ["윈디", ""],
+                ["발챙이", ""],
+                ["슈륙챙이", ""],
+                ["강챙이", ""],
+                ["케이시", ""],
+                ["윤겔라", ""],
+                ["후딘", ""],
+                ["알통몬", ""],
+                ["근육몬", ""],
+                ["괴력몬", ""],
+                ["모다피", ""],
+                ["우츠동", ""],
+                ["우츠보트", ""],
+                ["왕눈해", ""],
+                ["독파리", ""],
+                ["꼬마돌", ""],
+                ["데구리", ""],
+                ["딱구리", ""],
+                ["포니타", ""],
+                ["날쌩마", ""],
+                ["야돈", ""],
+                ["야도란", ""],
+                ["코일", ""],
+                ["레어코일", ""],
+                ["파오리", ""],
+                ["두두",""],
+                ["두트리오", ""],
+                ["쥬쥬", ""],
+                ["쥬레곤", ""],
+                ["질퍽이", ""],
+                ["질뻐기", ""],
+                ["셀러", ""],
+                ["파르셀", ""],
+                ["고오스", ""],
+                ["고우스트", ""],
+                ["팬텀", ""],
+                ["롱스톤", ""],
+                ["슬리프", ""],
+                ["슬리퍼", ""],
+                ["크랩", ""],
+                ["킹크랩", ""],
+                ["찌리리공", ""],
+                ["붐볼", ""],
+                ["아라리", ""],
+                ["나시", ""],
+                ["탕구리", ""],
+                ["텅구리", ""],
+                ["시라소몬", ""],
+                ["홍수몬", ""],
+                ["내루미", ""],
+                ["또가스", ""],
+                ["또도가스", ""],
+                ["뿔카노", ""],
+                ["코뿌리", ""],
+                ["럭키", ""],
+                ["덩쿠리", ""],
+                ["캥카", ""],
+                ["쏘드라", ""],
+                ["시드라", ""],
+                ["콘치", ""],
+                ["왕콘치", ""],
+                ["별가사리", ""],
+                ["아쿠스타", ""],
+                ["마임맨", ""],
+                ["스라크", ""],
+                ["루주라", ""],
+                ["에레브", ""],
+                ["마그마", ""],
+                ["쁘사이저", ""],
+                ["켄타로스", ""],
+                ["잉어킹", ""],
+                ["갸라도스", ""],
+                ["라프라스", ""],
+                ["메타몽", ""],
+                ["이브이", ""],
+                ["샤미드", ""],
+                ["쥬피썬더", ""],
+                ["부스터", ""],
+                ["폴리곤", ""],
+                ["암나이트", ""],
+                ["암스타", ""],
+                ["투구", ""],
+                ["투구푸스", ""],
+                ["프테라", ""],
+                ["잠만보", ""],
+                ["프리져", ""],
+                ["썬더", ""],
+                ["파이어", ""],
+                ["미뇽", ""],
+                ["신뇽", ""],
+                ["망나뇽", ""],
+                ["뮤츠", ""],
+                ["뮤", ""]]
+                for(let no = 0; no<poke_list.length; no++){
+                    if(no<9){
+                        poke_list[no][1] = "관동도감/00"+(no+1)+".png"
+                    }else if(no<99){
+                        poke_list[no][1] = "관동도감/0"+(no+1)+".png"
+                    }else if(no<151){
+                        poke_list[no][1] = "관동도감/"+(no+1)+".png"
+                    }
+                }
+        function add_word(){
+            let h3 = document.createElement("h3")//DOM 객체 => <h3></h3> 껍데기 만든 것 뿐
+            let poke_index = Math.floor(Math.random()*(poke_list.length))//랜덤 단어
+            let spot = Math.floor(Math.random()*80)//랜덤 위치
+            start = Math.floor(Math.random()*2)//랜덤 시작
+            let name = poke_list.splice(poke_index,1)
+            if(start == 0){//왼쪽
+                h3.innerHTML =`<img src="${name[0][1]}">`
+                h3.innerHTML += `<span>`+name[0][0]+`</span>`//단어 추가 => <h3>단어</h3>
+                h3.id ="left"
+                h3.style.top = `${spot}%`
+                h3.style.left = `0px`
+            }else if(start == 1){//오른쪽
+                h3.innerHTML = `<span>`+name[0][0]+`</span>`//단어 추가 => <h3>단어</h3>
+                h3.innerHTML +=`<img src="${name[0][1]}">`
+                h3.id ="right"
+                h3.style.top = `${spot}%`
+                h3.style.right = `50px`
+            }
+            words.appendChild(h3)
+        }
+        //글자 입력 시, 엔터만 들어와
+        word.onkeyup = (event)=>{//콜백 함수처럼 임의 사용
+            if(event.keyCode == 13){//엔터키가 아니면        //수행하지마
+                let h3s_l = document.querySelectorAll("#words>#left")//화면에 보이는 모든 ㅣㅐ단어를 문자화
+                let h3s_r = document.querySelectorAll("#words>#right")//화면에 보이는 모든 ㅣㅐ단어를 문자화
+                for(let h3 of h3s_l){//해당 for문에서만 접근 가능한 h3
+                    if(word.value == h3.textContent){//입력한 단어 == 모든 단어 중 하나
+                        h3.innerHTML = `<img src="관동도감/몬스터볼.png">`
+                        back.style.backgroundImage = "url('관동도감/왼.png')"
+                        sucess++
+                        score.textContent = "잡은 포켓몬 수 : " + sucess
+                        setTimeout(function(){ words.removeChild(h3)},2000)
+                        if(sucess%10==0&&cycle!=0){
+                            cycle--
+                        }
+                    }
+                }
+                for(let h3 of h3s_r){//해당 for문에서만 접근 가능한 h3
+                    if(word.value == h3.textContent){//입력한 단어 == 모든 단어 중 하나
+                        h3.innerHTML = `<img src="관동도감/몬스터볼.png">`
+                        back.style.backgroundImage = "url('관동도감/오.png')"
+                        sucess++
+                        score.textContent = "잡은 포켓몬 수 : " + sucess
+                        setTimeout(function(){ words.removeChild(h3)},2000)
+                        if(sucess%10==0&&cycle!=0){
+                            cycle-- 
+                        }
+                    }
+                }
+                word.value = ""//입력한 단어 초기화
+            }
+        }
+        // setInterval(add_word, 2000)//단어 나오는 동작
+        
+        //보이는 단어가 움직일 수 있도록
+        let t = 0
+        function move_words(){
+            t++
+            if(defeated >=10){
+                clearInterval(interval_id)
+                alert("10마리를 놓쳤습니다.")
+                window.location.reload()
+                return
+            }
+            let h3s_l = document.querySelectorAll("#words> #left")//화면에 보이는 모든 단어를 문자화
+            let h3s_r = document.querySelectorAll("#words> #right")//화면에 보이는 모든 단어를 문자화
+            if(t>cycle){
+                if(poke_list.length >0){
+                    add_word()
+                }else if(poke_list.length<=0 && h3s_r.length<=0){
+                    clearInterval(interval_id)
+                    return
+                }
+                t = 0
+            }
+            for(let h3 of h3s_l){//해당 for문에서만 접근 가능한 h3
+                let left = parseInt(h3.style.left) // h3.style.top의 형식이 0px 이기 때문에 앞부분 추출 위해.
+                left += move_block
+                if(left>650){//화면 밖으로 내려가면
+                    words.removeChild(h3)
+                    defeated++
+                    fail.textContent = "놓친 포켓몬 수 : " + defeated
+                }
+                h3.style.left = left+"px"//다시 숫자를 픽셀문자화
+            }
+            for(let h3 of h3s_r){//해당 for문에서만 접근 가능한 h3
+                let right = parseInt(h3.style.right) // h3.style.top의 형식이 0px 이기 때문에 앞부분 추출 위해.
+                right += move_block
+                console.log(right)
+                if(right>650){//화면 밖으로 내려가면
+                    words.removeChild(h3)
+                    defeated++
+                    fail.textContent = "놓친 포켓몬 수 : " + defeated
+                }
+                    h3.style.right = right+"px"//다시 숫자를 픽셀문자화
+            }
+        }
+    </script>
+</body>
+</html>

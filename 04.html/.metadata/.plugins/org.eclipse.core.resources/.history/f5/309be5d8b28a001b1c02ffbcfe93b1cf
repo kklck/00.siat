@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아약스 메인</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<h1>Ajax Test</h1>
+	<button id="ok">OK</button>
+</body>
+</html>

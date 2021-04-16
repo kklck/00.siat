@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float 배치</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            background: cyan;
+        }
+        div:nth-child(1){
+            background: red;
+            float: left;
+        }
+        div:nth-child(2){
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+        div:nth-child(3){
+            width: 400px;
+            height: 400px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div><!--1에 가려져있음-->
+    <div>3</div>
+</body>
+</html>

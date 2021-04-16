@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진짜 로또 번호 만들기</title>
+    <script>
+        let lottoNums = []
+        for(let i = 0; i<6; i++){
+            let lot = Math.floor(Math.random()*45+1)
+            if(lottoNums.indexOf(lot)==-1){//배열 안에 같은 값이 없다면
+                lottoNums.push(lot)
+            }else{
+                i--
+            }
+        }
+        console.log("로또 번호는 : " + lottoNums)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

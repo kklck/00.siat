@@ -1,0 +1,27 @@
+- 변형 : transition-(delay|duration|property|timing-function)
+    - 위치, 크기, 박스, 테두리, 색상, 투명도, 변환
+    - 위치는 기본적으로 static해서 변형이 까다로움.
+        - 기본 위치 초기화, position 필요
+    - transition: background-color 1s ease, width 5s linear 1s;
+- animation : 변형을 반복
+    - direction = altenate : 돌아오는 reverse 동작. normal : 같은 동작만. 
+    - @keyframes{from,%,to} : 선언
+
+- transform : 2차원 변환
+    - XYZ축 이동, 확대, 축소, 기울기, 회전
+
+- transform-origin : 변환 중심 설정. EX) 시곗바늘
+
+
+* 예제9~10
+---------------------------------
+과제1
+
+장애인지원 커서 올리면 올리기
+
+과제2
+
+div>p
+뉴스처럼 타공판 분 초
+애니메이션
+translateX 또는 left 이용

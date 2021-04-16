@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery event</title>
+
+
+<style type="text/css">
+	.bg { background : yellow; }
+	.border { border : 3px dotted red; }
+</style>
+<script src="/WebUI/WebContent/jQuery/lib/jquery-3.6.0.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function(){
+		$("h1").css({"cursor":"pointer"})
+		//h1 클릭
+		$("h1").bind("click",function(){
+			let li = $("<li/>").text("서울")
+			$("ul").append(li)
+			$("ul").append("<li>서울</li>")
+		})
+		$("li").css({"cursor":"pointer"})
+		//오리지널 이벤트(bind, one, 축약형 등)
+		// $("li").bind("click",function(){//li 태그에서 click 이벤트 발생 시 function에 연결(bind)해주세요
+		// })
+		//동적 생성 요소에는 bind 이벤트 동작 불가 => on() 사용
+		$("ul").on("click","li", function(){
+			$("#result").text($(this).text())
+		})
+	})
+</script>
+
+</head>
+<body>
+	<h1>제이쿼리 이벤트</h1>
+	<ul>
+		<li>부에노스 아이레스</li>
+		<li>바르셀로나</li>
+		<li>리마</li>
+		<li>라파스</li>
+	</ul>	
+	<div id="result"></div>
+</body>
+</html>

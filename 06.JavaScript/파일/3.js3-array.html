@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 로또</title>
+    <script>
+        function make_lotto(){ //실행할 때마다 난수 받겠다.
+            let lot = Math.floor(Math.random()*45+1) //1~45 로또 번호 생성
+            return lot
+        }
+        lottoNums = [] // 빈 배열
+        lottoNums.push(make_lotto())
+        lottoNums.push(make_lotto())
+        lottoNums.push(make_lotto())
+        lottoNums.push(make_lotto())
+        lottoNums.push(make_lotto())
+        lottoNums.push(make_lotto())
+        console.log(lottoNums)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

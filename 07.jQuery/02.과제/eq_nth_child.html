@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0330</title>
+    <script src="lib/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#eq tr>td:eq(2)").css("background","blue")
+            $("#nth tr>td:nth-child(2)").css("background","red")
+        })
+    </script>
+</head>
+<body>
+    <table id="eq" border="1">
+        <caption>eq</caption>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>혈액형</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>1</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>2</td>
+            <td>AB</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>3</td>
+            <td>O</td>
+        </tr>        
+    </table>
+    <table id="nth" border="1">
+        <caption>nth-child</caption>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>혈액형</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>1</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>2</td>
+            <td>AB</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>3</td>
+            <td>O</td>
+        </tr>        
+    </table>
+</body>
+</html>
