@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>fDynamicWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 스프링 서블릿 설정 M:Java, V:jsp, C:servlet -->
+  <servlet>
+  	<servlet-name>springMVC</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class><!-- 스프링이 정해놓은 MVC 패턴 클래스 -->
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name><!-- 설정 파일 위치 지정?, 위의 클래스의 소문자 버전 -->
+  		<param-value><!-- spring 용 xml로 만들 것 -->
+  			/WEB-INF/springConfig/springMVC-servlet.xml
+  			/WEB-INF/springConfig/common-servlet.xml
+  		</param-value>
+  	</init-param>
+  	
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>springMVC</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>

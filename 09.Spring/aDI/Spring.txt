@@ -53,8 +53,22 @@
 	- Weaving : target의 Joinpoint에 point
 	- <aop:aspectj-autoproxy/> : AOP 자동 설정, @로 지정한 것만 취급
 	
+- 스프링에서 MVC
+	- INF 폴더는 임의로 접근할 수 없게하는 프론트단
+	- jsp을 WEB-INF 아래 생성
+	
 ===========================
-Java Project 생성
-Configure - Maven
-Spring - Add
-pom.xml - dependency
+1. Java Project 생성 || Dynamic Project 생성
+2. Configure - Maven
+3. Spring - Add
+4. pom.xml - dependency
+===========================
+1. Legacy
+2. MVC 선택
+3. 패키지 3단 설정
+=> 위의 Java Project 이미 해둔 것
+4. pom의 자바, 스프링, 아파치메이븐 버전 업
+5. WebContent는 src/main/webapp
+6. 서버 설정 - 하단 모듈 - Path 이름 /프로젝트명
+7. xsi 다름
+8. 한글 인코딩 필요
