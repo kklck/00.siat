@@ -38,6 +38,10 @@
 	- @Repository(Bean이름) : 모델 역할을 하는 Component
 	- @Aspect : AOP Weaving을 위해 advice클래스에 지정.
 	- @[Before|Around|After]("execution(~)") : 위빙할 메소드에 포인트컷 지정.
+	- @Controller : 컨트롤 역할을 하는 Component
+	- @RequestMapping(링크 지정, method = RequestMethod.POST) : 해당 링크에 들어왔을 때 실행될 함수, get이나post 만 넘길 수 있음.
+	- @RequestParam(defaultValue = "0") : 숫자 매개변수 받을 때, 기본 값 설정
+	- @ModelAttribute(별칭) : 매개변수나, 함수리턴 값에 별칭을 주고, 별도의 선언 없이 속한 컨트롤러에서 포워딩 한 View에 연결
 	
 - 상위 인터페이스 생성하는 이유?
 	- 확장성을 염두. 구조를 정의해야 편한 코딩 가능
@@ -56,6 +60,7 @@
 - 스프링에서 MVC
 	- INF 폴더는 임의로 접근할 수 없게하는 프론트단
 	- jsp을 WEB-INF 아래 생성
+	- 컨트롤러 파라미터에 HttpSession 선언 시 세션 set 가능
 	
 ===========================
 1. Java Project 생성 || Dynamic Project 생성
