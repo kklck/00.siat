@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<insert id="userInsert" parameterType="mem">
+		<![CDATA[
+		INSERT INTO member VALUES(#{userId}, #{userPass}, #{userName})
+		]]>
+	</insert>
+	<select id="idCheck" parameterType="mem" resultType="mem">
+		<![CDATA[
+		SELECT * FROM member WHERE userid = #{userId}
+		]]>
+	</select>
+</mapper>

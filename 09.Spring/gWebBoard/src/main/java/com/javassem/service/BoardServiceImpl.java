@@ -1,5 +1,6 @@
 package com.javassem.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getBoard(vo);
 	}
 
-	public List<BoardVO> getBoardList(BoardVO vo) {
-		return boardDAO.getBoardList(vo);
+	public List<BoardVO> getBoardList(HashMap map) {
+		return boardDAO.getBoardList(map);
 	}
 	public void updateCnt(BoardVO vo) {
 		boardDAO.updateCnt(vo);

@@ -44,11 +44,14 @@
 		]]>
 	</select>
 	
-	<select id="getBoardList" resultType="board">
-		<![CDATA[
+	<select id="getBoardList" parameterType="hashmap" resultType="board">
 		SELECT *
 		FROM BOARD
+		<where>
+			<if test="searchCondition != null">
+				${searchCondition} LIKE '%${searchKeyword}%'
+			</if>
+		</where>
 		ORDER BY SEQ DESC
-		]]>
 	</select>
 </mapper>

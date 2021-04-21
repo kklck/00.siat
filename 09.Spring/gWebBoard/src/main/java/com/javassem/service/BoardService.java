@@ -1,5 +1,6 @@
 package com.javassem.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.javassem.domain.BoardVO;
@@ -21,7 +22,7 @@ public interface BoardService {
 	BoardVO getBoard(BoardVO vo);
 
 	// 글 목록 조회
-	List<BoardVO> getBoardList(BoardVO vo);
+	List<BoardVO> getBoardList(HashMap map);
 	
 	//조회수 업
 	void updateCnt(BoardVO vo);
