@@ -14,4 +14,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM member WHERE userid = #{userId}
 		]]>
 	</select>
+	<select id="getMemberList" resultType="mem">
+		<![CDATA[
+		SELECT * FROM member order by userid desc
+		]]>
+	</select>
+	<select id="getMemberListMap" parameterType="hashmap" resultType="mem">
+		SELECT *
+		FROM member
+		<where>
+			<if test="key != null">
+				${key} LIKE '%${val}%'
+			</if>
+		</where>
+		ORDER BY SEQ DESC
+	</select>
 </mapper>

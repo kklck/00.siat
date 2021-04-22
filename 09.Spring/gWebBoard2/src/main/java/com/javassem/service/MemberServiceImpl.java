@@ -1,6 +1,9 @@
 package com.javassem.service;
 
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +33,17 @@ public class MemberServiceImpl implements MemberService{
 	   {
 		  return memberDAO.memberInsert(vo);
 	   }
+
+
+	@Override
+	public List<MemberVO> getMemberList() {
+		
+		return memberDAO.getMemeberList();
+	}
+
+
+	@Override
+	public List<MemberVO> getMemberList(HashMap map) {
+		return memberDAO.getMemeberList(map);
+	}
 }

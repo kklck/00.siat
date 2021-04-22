@@ -32,16 +32,15 @@ $(function(){
 	
 	//아이디 중복체크
 	$('#userId').keyup(function(){
-        
+        $.ajax({
+        	type:"post",
+        	url:"idCheck.do",
+        	data:{userId : $("#userId").val()},
+        	contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+        	success:function(data){//컨트롤러에서 리턴한 String
+        		$("#idCheckResult").html(data);
+        	}
+        })
        
 	})
 })
-	
-	
-	
-	
-	
-	
-	
-	
-	

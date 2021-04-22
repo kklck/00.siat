@@ -8,6 +8,6 @@
 </head>
 <body>
 	축하합니다
-	<a href="main">메인</a>
+	<a href="Main.do">메인</a>
 </body>
 </html>

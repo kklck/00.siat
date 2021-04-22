@@ -9,7 +9,7 @@
 <body>
 	로그인 성공하였습니다.<hr>
 	
-	<a href=''>모든 회원 정보 보기 </a>
+	<a href='Main.do'>모든 회원 정보 보기 </a>
 	
 </body>
 </html>

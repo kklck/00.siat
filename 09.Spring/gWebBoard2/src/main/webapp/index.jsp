@@ -12,7 +12,11 @@
 
 <p> <a href='user/userLogin.do'>로그인</a> </p>
 <p> <a href='user/userJoin.do'>회원가입</a></p>
-<p> <a href='user/userJoin_ok.do'>회원가입 성공</a></p>
+
+
+<p> <a href='sample.do'>복습</a></p>
+
+<a href="user/Main.do">메인</a>
 
 </body>
 </html>

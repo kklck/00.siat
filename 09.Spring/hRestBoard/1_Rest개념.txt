@@ -1,0 +1,52 @@
+
+1. pom.xml
+	- 자바 버전 확인 : 1.8
+	- 서블릿 버전 확인 : 3.1.0
+	- junit 버전 확인 : 4.12
+	
+	- jackson 추가 : 2.9.6
+	- json 추가	  : 2.8.2
+	- lombok 추가 ( 필요하면 )
+
+
+2. 스프링 설정 파일 : servlet-context.xml 에서
+	스캔 대상 변경
+	<context:component-scan base-package="com.javassem" />
+	
+3. SampleController.java
+   index.jsp 에서 실행
+  
+   
+[참고]
+
+1. @RestController
+
+	- @Controller는 String 반환하는 경우 jsp 파일명으로 간주
+	- @RestController는 String 리턴시 데이타가 리턴된다
+	
+	- 즉, REST 방식으로는 화면 자체가 아니라 데이터 자체를 전송하는 방식이다.
+	      @Controller + @ResponseBody 동일
+	
+2. @PathVariable
+	- URL 자체에 데이터를 식별할 정보 처리 ( 파라메터 )
+
+3. @ResponseBody : 일반적인 jsp와 같은 뷰로 전달되는 것이 아니라 데이터 자체를 전달하기 위한 용도
+   @RequestBody  : json 데이타를 원하는 타입으로 바인딩 처리
+   
+4. @CrossOrigin : Ajax의 크로스 도메인 문제를 해결해주는 어노테이션
+
+[결론] Rest 방식을 많이 사용하는 경우는 AJAX인 경우이다
+	
+   
+ ========================================
+ 0. URL 설계
+	-------------------------------------------------
+	작업		URL					전송방식
+	-------------------------------------------------
+	등록		/replies/new			post
+	목록		/replies				get
+	조회		/replies/:no			get
+	삭제		/replies/:no			delete
+	수정		/replies/:no			put
+	
+ 

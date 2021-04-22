@@ -1,0 +1,62 @@
+
+1. 확인하기
+	(1) getBoard.jsp
+		<!-- 2. 댓글목록 -->
+		<table id='replyList' border='2'/>
+	
+	(2) reply.js
+			// 댓글목록 출력하기
+			replyList();
+			function replyList(){
+						$.ajax({
+		             	type :'get',
+		             	url : '../replies',
+		             	dataType : 'json',
+		             	success : function(result){
+		             		//alert(result);
+		             		//console.log(result);
+		             		// 화면에 출력
+		             		var replyList = $('#replyList');
+		             		for(row of result){
+		             			console.log(row);
+		             			var tr = $('<tr/>');
+		             			var rno =  $('<td/>').html(row['rno']);
+		             			tr.append(rno);
+		             			var replyer =  $('<td/>').html(row['replyer']);
+		             			tr.append(replyer);
+		             			var reply =  $('<td/>').html(row['reply']);
+		             			tr.append(reply);
+		             			replyList.append(tr);
+		             		}
+		             	},
+		            	error : function(request, status, err){
+		            		alert('error');
+		            		console.log(err);
+		            	}
+		       }); // end of ajax 
+			}	
+	(3) ReplyController.java
+		//-----------------------------------------------
+		// 2. 댓글목록출력
+		@GetMapping("replies")
+		public List<ReplyVO> list(){
+			List<ReplyVO> list = new ArrayList<ReplyVO>();		
+			for(int i=0; i<3; i++) {
+				ReplyVO vo = new ReplyVO();
+				vo.setRno(i);
+				vo.setReply("테스트2");
+				vo.setReplyer("홍길동2");
+				list.add(vo);
+			}		
+			return list;
+		}	
+	
+	
+---------------------------------------------------------------
+
+2. DB 연결하여 실제 레코드 출력
+	(1) ReplyMapper.xml
+	(2) ReplyDAOImpl.java
+	(3) ReplyServiceImpl.java
+	(4) ReplyController.java 에서 호출
+	

@@ -1,0 +1,13 @@
+
+1. reply.js 에서 동적으로 수정과 삭제 버튼 생성
+
+	// 4. 수정과 삭제 버튼 추가
+	//	(1) 동적 버튼 만들기
+	tr.append('<td><button class="modify">수정</button></td>');
+	tr.append('<td><button class="delete">삭제</button></td>');
+	
+	// (2) 동적버튼 클릭시에 추가, 삭제 버튼 이벤트 추가
+		
+2. ReplyController.java 에서 연결만 확인
+
+3. DB 연결

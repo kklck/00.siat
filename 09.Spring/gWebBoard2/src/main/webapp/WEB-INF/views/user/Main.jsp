@@ -43,7 +43,7 @@
      </tr>
    <c:forEach items="${list}" var="vo">
      <tr>
-       <td>${vo.userNo}</td>
+       <td>유저넘버</td>
        <td>${vo.userId}</td>
        <td>${vo.userName}</td>
        <td>${vo.userPass}</td>
@@ -65,10 +65,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-

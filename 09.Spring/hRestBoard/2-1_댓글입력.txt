@@ -1,0 +1,88 @@
+
+0. 테이블
+
+	테이블명 : reply
+	
+	댓글번호		rno			PK
+	게시글번호		bno			FK
+	댓글			reply
+	댓글작성자		replyer
+	댓글작성일		replydate
+
+
+  CREATE TABLE REPLY 
+   (	"RNO" NUMBER(10,0), 
+	"BNO" NUMBER(10,0) NOT NULL ,
+	"REPLY" VARCHAR2(1000) NOT NULL, 
+	"REPLYER" VARCHAR2(50) NOT NULL, 
+	"REPLYDATE" DATE DEFAULT sysdate,  
+	 CONSTRAINT "PK_REPLY" PRIMARY KEY ("RNO"),
+ 	 CONSTRAINT "FK_REPLY_BOARD" FOREIGN KEY ("BNO") REFERENCES BOARD(SEQ) 
+   )  ;
+
+   create sequence reply_seq;
+
+
+2. getBoard.jsp에 댓글 입력폼 추가	
+	(1) 처음에는 간단하게 입력필드와 버튼만 추가하여 확인
+			<input type='text' name='reply' id='reply'>
+			<input type='button' value='댓글추가' id='replyConfirm'>
+			
+	(2) 댓글필요한 데이타 추가
+		<form name='replyFrm' id='replyFrm'>
+			<input type='hidden' name='bno' id='bno' value='${board.seq}'>
+			<input type='text' name='replyer' id='replyer' value='홍길동'>
+			<input type='text' name='reply' id='reply'>
+			<input type='button' value='댓글추가' id='replyConfirm'>
+		</form>
+		
+3. reply.js에서 추가
+	(1) 댓글버튼이 눌렸을 때
+		$('#replyConfirm').click(function(){
+		
+			$.ajax({
+	             	type :'post',
+	             	data : { reply : $('#reply').val()},               	
+	             	url : '../replies/new',
+	             	success : function(result){
+	             		alert(result);
+	             	},
+	            	error : function(err){
+	            		alert('error');
+	            		console.log(err);
+	            	}
+	       }); // end of ajax       	
+		}); // end of click
+	
+	(2) 댓글버튼이 눌렸을 때 폼의 데이타를 모두 전송
+		// 댓글버튼이 눌렸을 때
+		$('#replyConfirm').click(function(){
+		
+			//serialize() jquery api 메소드를 이용해서 form 의 모든 element의 name과 value 값을 넘길수 있음!!         
+	        var params = $('#replyFrm').serialize();
+		
+			$.ajax({
+	             	type :'post',	             	  
+	             	data : params,
+	             	url : '../replies/new',
+	             	success : function(result){
+	             		alert(result);
+	             	},
+	            	error : function(err){
+	            		alert('error');
+	            		console.log(err);
+	            	}
+	       }); // end of ajax
+		}); // end of click
+		
+4. ReplyController.java 에서 단계별로 확인
+
+
+5. DB 연결
+	(1) ReplyMapper.xml
+	(2) ReplyDAOImpl.java
+	(3) ReplyServiceImpl.java
+	(4) ReplyController.java 에서 호출
+	
+	
+		
