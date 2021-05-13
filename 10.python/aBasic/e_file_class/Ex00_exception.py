@@ -18,10 +18,17 @@
     [참고] 파이썬 내장 예외
         https://docs.python.org/3/library/exceptions.html
 """
-"""
 # 0으로 나누기
-#(1)
-10/0 -> 예외발생 : ZeroDivisionError: division by zero
+# (1)
+try:
+    10 / 0  # 0으로 나눌 수 없음
+except Exception as e:
+    print(e, "예외 발생\n0으로 나눌 수 없음")
+else:
+    print("예외 발생하지 않음")
+finally:
+    print("예외 상관 없이 무조건 수행")
+"""
 
 # (2)
 try:

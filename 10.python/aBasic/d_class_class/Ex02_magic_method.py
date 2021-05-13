@@ -1,3 +1,50 @@
+# class Sample:
+#
+#     # 생성자
+#     def __init__(self, name, age):  # self는 자바의 this, 매개변수 아님
+#         print("Sample 생성자 호출")
+#         self.name = name  # self.변수 => 멤버변수화
+#         self.age = age
+#
+#     def __str__(self):
+#         return "이름 : {}\n나이 : {}".format(self.name, self.age)
+#
+#     def __add__(self, other):
+#         self.age += other
+#         return self.age
+#
+#     def __ge__(self, other):  # 내부에 연산자 >= 만 있어야 하는 매직 메소드
+#         if self.age >= other:
+#             return "성인"
+#         else:
+#             return "미성년"
+#
+#     def __bool__(self):
+#         if self.name == "또길자":
+#             return True
+#         else:
+#             return False
+#
+#     # 소멸자
+#     def __del__(self):
+#         self.name = ""
+#         self.age = 0
+#         print("Sample 소멸자 호출")
+#
+#
+# s = Sample("또길자", 25)
+#
+# print(s)        # str
+# print(s + 10)   # add
+# print(dir(s))   # 해당 클래스에 들어갈 수 있는 메소드
+#
+# print(s >= 20)  # ge
+#
+# if s:           # bool
+#     print("또길자 본인입니다.")
+# else:
+#     print("또길자가 아닙니다.")
+
 """
     매직 메소드
 
@@ -53,3 +100,6 @@
         oct()	    object.__oct__(self)        
         hex()	    object.__hex__(self)
 """
+
+print("=================================")
+

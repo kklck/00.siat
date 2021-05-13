@@ -17,4 +17,48 @@
 
     - 파일을 열고 사용 후에는 반드시 닫아야 한다
 """
+"""
+try:
+    f = open("./data/data.txt", "r", encoding="utf-8")  # 파일 열기, read
+except Exception as e:
+    print(e, "예외 발생")
+else:
+    while True:
+        line = f.readline()  # 파일 읽기, 한줄
+        if not line:
+            break
+        print(line,end="")
+    f.close()
+finally:
+    pass
+"""
 
+"""
+with open("./data/data.txt", "r", encoding="utf-8") as f:  # with open -> 자동 close 
+    while True:
+        line = f.readline()  # 파일 읽기, 한줄
+        if not line: break
+        print(line, end="")
+"""
+
+"""
+with open("./data/data.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+    print(content)
+    words = content.split()
+    print(words)
+    num = len(words)
+print("파일의 총 단어 수", num)
+"""
+
+try:
+    f = open("./data/data.txt", "r", encoding="utf-8")
+    content = f.read()
+    words = content.split()
+    num = len(words)
+except Exception as e:
+    print(e,"에러 발생")
+else:
+    print("파일의 총 단어 수",num)
+finally:
+    f.close()
