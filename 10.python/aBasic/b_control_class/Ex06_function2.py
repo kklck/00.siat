@@ -1,36 +1,20 @@
+
 # [추가] 함수도 객체이다
 def case1():
     print('case-1')
 
-
 def case2():
     print('case-2')
-
 
 def case3():
     print('case-3')
 
 
-f = {'a1': case1, 'a2': case2, 'a3': case3}  # 함수도 객체라 () 없이 할당 가능
-print(f['a1']())  # case1()
-print("=======================")
-# ---------------------------------------
+
+#---------------------------------------
 # 글로벌 변수와 지역변수
 
-temp = "글로벌"
 
-
-def func():
-    global temp
-    print("0 >", temp)  # global 없이 지역변수를 선언 시 오류
-    temp = "지역"  # global 선언 후 지역변수는 글로벌 변수 처리
-    print("1 >", temp)
-
-
-func()
-print("2 >", temp)
-
-print("=======================")
 
 '''
 #----------------------------------------------
@@ -44,18 +28,8 @@ print("=======================")
 '''
 
 
-def f(a, b):
-    return a + b
 
-
-print(f(3, 2))
-
-f = lambda a, b: a + b
-print(f(2, 3))
-
-print("=======================")
-
-# -----------------------------------------------------------
+#-----------------------------------------------------------
 """  맵리듀스
     (1) map()
          ` 연속 데이터를 저장하는 시퀀스 자료형에서 요소마다 같은 기능을 적용할 때 사용
@@ -69,65 +43,6 @@ print("=======================")
 """
 
 
-def cals(x):
-    return x * 2
 
 
-data = [1, 2, 3, 4, 5]
-# 모든 리스트 요소를 함수 호출하고 싶어
 
-print(list(map(cals, data)))  # cals 함수에 리스트 요소를 하나씩 입력, 눈에 보이지 않는 반복문 존재
-
-# 리듀스
-from functools import reduce
-
-
-def f(a, b):
-    print(a, b, a + b)
-    return a + b
-
-
-print(reduce(f, data))  #
-
-print("===============================")
-
-
-def even_filter(list):
-    return [i for i in list if i % 2 == 0]
-
-
-print(even_filter([1, 2, 4, 5, 8, 9, 10]))
-
-
-def is_prime_number(num):
-    return "소수가 아닙니다." if {0 for i in range(2, int(num / 2) + 1) if num % i == 0} else "소수입니다."
-    #     return "소수가 아닙니다."
-    # else:
-    #     return "소수입니다."
-    # if num % 2 == 0:
-    #     return "소수가 아닙니다."
-    # for i in range(3, int(num / 2) + 1, 2):
-    #     if num % i == 0:
-    #         return "소수가 아닙니다."
-    # return "소수입니다."
-
-
-print(is_prime_number(60))
-print(is_prime_number(1))
-print(is_prime_number(2))
-print(is_prime_number(3))
-print(is_prime_number(4))
-print(is_prime_number(5))
-print(is_prime_number(6))
-print(is_prime_number(7))
-print(is_prime_number(8))
-print(is_prime_number(9))
-print(is_prime_number(10))
-print(is_prime_number(11))
-
-
-def count_vowel(s):
-    return len(list(i for i in s if i in ["a", "e", "i", "o", "u"]))
-
-
-print(count_vowel("pythonian"))

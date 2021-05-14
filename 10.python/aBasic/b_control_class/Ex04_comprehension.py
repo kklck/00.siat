@@ -61,7 +61,7 @@ print("======================")
 # 파이써닉해
 
 word = "LOVE LOL"
-wcnt = {i: word.count(i) for i in word}  # word 글자마다 해당 글자 갯수 출력
+wcnt = {i: word.count(i) for i in word}     # word 글자마다 해당 글자 갯수 출력
 print(wcnt)
 
 # ------------------------------------------------
@@ -72,21 +72,11 @@ print(alist)
 
 aset = {n for n in data}  # 셋
 print(aset)
-print("======================")
 # -------------------------------------------------
-# [참고] 제너레이터 컨프리핸션 (잘 몰라도 됨),
+# [참고] 제너레이터 컨프리핸션
 # ( ) 를 사용하면 튜플이라 생각하지만 튜플은 컨프리핸션이 없다.
-# 단 한번만 Read 가능
 
 
-data = [1, 2, 1, 2, 3, 2, 1]
-glist = [n for n in data]   # 리스트 컨프리핸션
-print(glist)
-glist = {n for n in data}   # 셋 컨프리핸션
-print(glist)
-glist = (n for n in data)   # 튜플이 아닌 제너레이터 컨프리핸션
-print(glist)
-print(list(glist))
 print("======================")
 
 우리의결의 = """취하고싶으면달려라
@@ -106,10 +96,11 @@ print(rrr)
 
 print("==========================")
 
+
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
 nums = [i for i in range(20)]
 
-answer = [alpha + str(num) for alpha in alphabet for num in nums if num % 2 == 0]
+answer = [alpha+str(num) for alpha in alphabet for num in nums if num%2==0]
 
 print(len(answer))
