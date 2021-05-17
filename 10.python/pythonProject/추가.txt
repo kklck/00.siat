@@ -1,0 +1,20 @@
+pip install pygame
+
+pip install Pillow
+
+
+create table watermelon(
+mNum number primary key not null,
+mTitle varchar2(50),
+mSinger varchar2(30)
+);
+
+create SEQUENCE nNum_seq;
+
+insert into watermelon
+values(nNum_seq.nextval, 'Dun Dun Dance', '오마이걸');
+
+insert into watermelon
+values(nNum_seq.nextval, '감사', '김동률');
+
+commit;

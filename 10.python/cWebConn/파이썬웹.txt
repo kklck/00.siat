@@ -1,0 +1,8 @@
+파이썬 웹 백엔드
+    - Django
+    - Flask
+
+파이썬 웹 접근
+    - 목적 : 자료 긁어오기
+        - Scraping : 웹 사이트에 떠다니는 정보 처리
+        - Crawling : RSS(xml, json)의 정보를 받아 처리
