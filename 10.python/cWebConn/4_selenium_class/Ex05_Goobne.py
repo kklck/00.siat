@@ -14,17 +14,36 @@
 """
 
 from selenium import webdriver
+import time
+from bs4 import BeautifulSoup
 
-#-------------------------------1. 웹 페이지 접근
+# -------------------------------1. 웹 페이지 접근
 # 웹드라이버 객체 생성
 driver = webdriver.Chrome('./webdriver/chromedriver')
-driver.implicitly_wait(3)
-
 # 페이지 접근
-driver.get('http://www.goobne.co.kr/store/search_store.jsp')
+driver.get('http://www.kyochon.com/shop/overseas_view.asp')
 
+html = driver.page_source
+soup = BeautifulSoup(html, "html.parser")
 
+cls = soup.select(".overseasTab a")
 
+attr = []
+for i in cls:
+    attr.append(i["href"])
 
+print(attr)
 
-
+for page_idx in attr:
+    # 페이지 이동
+    print("http://www.kyochon.com/shop/" + page_idx)
+    # driver.execute_script("http://www.kyochon.com/shop/" + page_idx)
+    # time.sleep(2)
+    #
+    # html = driver.page_source
+    # soup = BeautifulSoup(html, "html.parser")
+    #
+    # body = soup.select(".slide dd")
+    #
+    # for i in body:
+    #     print(i.text)

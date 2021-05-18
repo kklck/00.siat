@@ -8,7 +8,18 @@
 '''
 
 # [1]
+from selenium import webdriver
 
-#----------------------------------------------
+# webDriver 객체생성
+driver = webdriver.Chrome("./webdriver/chromedriver.exe")
+driver.implicitly_wait(3)  # 3초 멈춰
+
+# 페이지 접근
+driver.get("http://www.google.com")
+# ----------------------------------------------
 # [2]
+search = driver.find_element_by_name("q")  # 구글 메인 input type="text" 의 name 은 q
+search.send_keys("코로나 극복")
+search.submit()  # form 안에 input이 하나라 그냥 submit 해도 괜찮음
 
+driver.close()
